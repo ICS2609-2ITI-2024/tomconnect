@@ -1,0 +1,15 @@
+{
+    "name": "group3/tomconnect",
+    "autoload": {
+        "psr-4": {
+            "Tomconnect\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Winfrey De Vera",
+            "email": "w.jamesdevera@gmail.com"
+        }
+    ],
+    "require": {}
+}
