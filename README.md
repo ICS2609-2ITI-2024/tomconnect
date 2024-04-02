@@ -1,8 +1,5 @@
 # TomConnect
 
-
-
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Welcome to TomConnect, the comprehensive organization directory for the University of Santo Tomas (UST)!
@@ -35,8 +32,8 @@ TomConnect is a centralized platform designed to streamline the process of disco
 Instructions for using the project, including examples or screenshots if applicable. -->
 
 ## Contributing
-<!-- 
-Guidelines for contributing to the project, including how to report bugs, suggest enhancements, or submit pull requests. -->
+
+Guidelines for contributing to the project, including how to report bugs, suggest enhancements, or submit pull requests.
 
 ## License
 
