@@ -24,7 +24,7 @@ TomConnect is a centralized platform designed to streamline the process of disco
 ## Features
 
 <!-- List of key features or functionalities of the project. -->
-* UST Org Gallery
+* UST Organization Gallery
 
 ## Installation
 
