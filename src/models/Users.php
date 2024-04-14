@@ -8,7 +8,6 @@ use Tomconnect\Models\Model;
 
 class Users extends Model
 {
-
     // CREATE
     public function create_user(string $username, string $email, string $password_hash, string $first_name, string $last_name, string $profile_picture_url)
     {
@@ -23,6 +22,18 @@ class Users extends Model
         $stmt->execute();
     }
     // READ
+
+    public function fetch_all_users()
+    {
+        try {
+            $sql = "SELECT * FROM users;";
+            $stmt = parent::connect()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            echo "FETCHING FAILED: " . $e;
+        }
+    }
 
     // UPDATE
     // DELETE
