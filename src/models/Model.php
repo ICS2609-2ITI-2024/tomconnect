@@ -6,8 +6,11 @@ namespace Tomconnect\Models;
 
 class Model extends Database 
 {
-    public function model_connect()
+    protected function sanitize_input($data): string
     {
-        return parent::connect();
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }
