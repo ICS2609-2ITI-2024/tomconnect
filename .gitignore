@@ -1,2 +1,63 @@
 /vendor/
 /test/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore archives and packages
+*.zip
+*.rar
+*.gz
+*.bz2
+*.7z
+*.tar
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore dependencies
+/node_modules
+/bower_components
+
+# Ignore environment-specific files
+.env
+
+# Ignore compiled code
+*.class
+*.war
+*.jar
+
+# Ignore macOS metadata
+._*
+
+# Ignore Jekyll cache
+.jekyll-cache/
+.jekyll-metadata
+
+# Ignore Dockerfiles and images
+Dockerfile
+docker-compose.yml
+*.dockerignore
+*.dockerimage
+
+# Ignore editor specific files
+*.sublime-project
+*.sublime-workspace
+
+# Ignore database files
+*.sqlite
+*.sqlite3
+*.db
