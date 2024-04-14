@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 07:28 AM
+-- Generation Time: Apr 14, 2024 at 10:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -55,7 +55,9 @@ CREATE TABLE `organizations` (
   `is_active` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `is_registration_open` tinyint(1) NOT NULL DEFAULT 1,
+  `registration_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -118,7 +120,6 @@ CREATE TABLE `users` (
   `profile_picture_url` varchar(255) DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT 0,
   `is_active` tinyint(1) DEFAULT 1,
-  `bio` varchar(128) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) DEFAULT 0
