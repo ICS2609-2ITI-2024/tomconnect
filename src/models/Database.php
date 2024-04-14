@@ -2,21 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Model;
+namespace Tomconnect\Models;
 
-require_once "../../config/config.php";
+require_once dirname(dirname(__DIR__)) . "\\config\\config.php";
+
+use PDO;
+use PDOException;
 
 class Database
 {
     protected function connect()
     {
         try {
-            $conn = new \PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully";
-        } catch (\PDOException $e) {
+            $dbh = new PDO("mysql:host=" . DB_HOST . ";port= " . DB_PORT . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $dbh;
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
-        return $conn;
     }
 }
