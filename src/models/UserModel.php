@@ -13,12 +13,7 @@ class UserModel extends Model
     {
         $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
         $stmt = parent::connect()->prepare($sql);
-        $stmt->bindParam(":username", $data['username']);
-        $stmt->bindParam(":email", $data['email']);
-        $stmt->bindParam(":password_hash", $data['password_hash']);
-        $stmt->bindParam(":first_name", $data['first_name']);
-        $stmt->bindParam(":last_name", $data['last_name']);
-        $stmt->bindParam(":profile_picture_url", $data['profile_picture_url']);
+        self::bind_parameters_to_statement($stmt, $data);
         $stmt->execute();
     }
     // READ
@@ -55,12 +50,8 @@ class UserModel extends Model
             $sql .= " " . $key . " = :" . $key;
         }
         $sql .= " WHERE user_id = :user_id";
-        echo $sql;
         $stmt = parent::connect()->prepare($sql);
-        foreach($data as $key => $value) {
-            echo ":" . $key . " = " . $value;
-            $stmt->bindParam(":" . $key, $value);
-        }
+        self::bind_parameters_to_statement($stmt, $data);
         $stmt->bindParam(":user_id", $user_id);
         $stmt->execute();
     }
