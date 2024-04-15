@@ -67,6 +67,9 @@ class UserModel extends Model
     // DELETE
     public function delete($user_id)
     {
-
+        $sql = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->execute();
     }
 }
