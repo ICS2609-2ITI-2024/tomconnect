@@ -34,6 +34,19 @@ class Users extends Model
             echo "FETCHING FAILED: " . $e;
         }
     }
+    
+    public function fetch_user($identifier)
+    {
+        try {
+            $sql = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
+            $stmt = parent::connect()->prepare($sql);
+            $stmt->bindParam(":user_id", $identifier);
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            echo "FETCHING FAILED: " . $e;
+        }
+    }
 
     // UPDATE
     // DELETE
