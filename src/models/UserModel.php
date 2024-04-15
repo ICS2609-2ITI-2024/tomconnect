@@ -6,7 +6,7 @@ namespace Tomconnect\Models;
 
 use Tomconnect\Models\Model;
 
-class User extends Model
+class UserModel extends Model
 {
     // CREATE
     public function create(array $data)
