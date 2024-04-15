@@ -26,7 +26,7 @@ class UserModel extends Model
     public function fetch_all()
     {
         try {
-            $sql = "SELECT * FROM users;";
+            $sql = "SELECT * FROM users WHERE is_deleted = 0;";
             $stmt = parent::connect()->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
