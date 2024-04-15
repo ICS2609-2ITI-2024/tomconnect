@@ -72,4 +72,11 @@ class UserModel extends Model
         $stmt->bindParam(":user_id", $user_id);
         $stmt->execute();
     }
+
+    private static function bind_parameters_to_statement($prepared_statement, array $parameters)
+    {
+        foreach($parameters as $parameter_name => $parameter_value) {
+            $prepared_statement->bindParam(":" . $parameter_name, $parameter_value);
+        }
+    }
 }
