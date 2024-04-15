@@ -6,24 +6,24 @@ namespace Tomconnect\Models;
 
 use Tomconnect\Models\Model;
 
-class Users extends Model
+class User extends Model
 {
     // CREATE
-    public function create_user(string $username, string $email, string $password_hash, string $first_name, string $last_name, string $profile_picture_url)
+    public function create(array $data)
     {
         $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
         $stmt = parent::connect()->prepare($sql);
-        $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password_hash", $password_hash);
-        $stmt->bindParam(":first_name", $first_name);
-        $stmt->bindParam(":last_name", $last_name);
-        $stmt->bindParam(":profile_picture_url", $profile_picture_url);
+        $stmt->bindParam(":username", $data['username']);
+        $stmt->bindParam(":email", $data['email']);
+        $stmt->bindParam(":password_hash", $data['password_hash']);
+        $stmt->bindParam(":first_name", $data['first_name']);
+        $stmt->bindParam(":last_name", $data['last_name']);
+        $stmt->bindParam(":profile_picture_url", $data['profile_picture_url']);
         $stmt->execute();
     }
     // READ
 
-    public function fetch_all_users()
+    public function fetch_all()
     {
         try {
             $sql = "SELECT * FROM users;";
@@ -35,7 +35,7 @@ class Users extends Model
         }
     }
     
-    public function fetch_user($user_id)
+    public function fetch($user_id)
     {
         try {
             $sql = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
@@ -47,7 +47,14 @@ class Users extends Model
             echo "FETCHING FAILED: " . $e;
         }
     }
-
     // UPDATE
+    public function update($user_id, array $data)
+    {
+
+    }
     // DELETE
+    public function delete($user_id)
+    {
+
+    }
 }

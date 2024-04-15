@@ -8,7 +8,7 @@ class EventModel extends Model
 {
     // TODO: Create: Functions for creating new records/entities in the database or data store.
 
-    public function create()
+    public function create(array $data)
     {
 
     }
@@ -19,21 +19,21 @@ class EventModel extends Model
 
     }
 
-    public function fetch()
+    public function fetch($event_id)
     {
 
     }
 
     // TODO: Update: Functions for updating existing records/entities in the database or data store.
 
-    public function update()
+    public function update($event_id, array $data)
     {
 
     }
 
     // TODO Functions for deleting records/entities from the database or data store.
 
-    public function delete()
+    public function delete($event_id)
     {
         
     }
