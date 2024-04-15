@@ -13,4 +13,15 @@ abstract class Model extends Database
         $data = htmlspecialchars($data);
         return $data;
     }
+
+    abstract public function create();
+
+    abstract public function fetch_all();
+
+    abstract public function fetch();
+
+    abstract public function update();
+
+    abstract public function delete();
+
 }
