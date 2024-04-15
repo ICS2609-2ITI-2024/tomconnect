@@ -35,7 +35,7 @@ class Users extends Model
         }
     }
     
-    public function fetch_user($identifier)
+    public function fetch_user($user_id)
     {
         try {
             $sql = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
