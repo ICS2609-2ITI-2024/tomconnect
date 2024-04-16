@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models;
 
+use Exception;
 use Tomconnect\Models\Model;
 
 class UserModel extends Model
@@ -11,10 +12,16 @@ class UserModel extends Model
     // CREATE
     public function create(array $data)
     {
-        $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
-        $stmt = parent::connect()->prepare($sql);
-        self::bind_parameters_to_statement($stmt, $data);
-        $stmt->execute();
+        try {
+            $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
+            $stmt = parent::connect()->prepare($sql);
+            self::bind_parameters_to_statement($stmt, $data);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            echo "USER CREATION FAILED: " . $e;
+            return false;
+        }
     }
     // READ
 
