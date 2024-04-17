@@ -10,7 +10,9 @@ class OrganizationModel extends Model
 
     public function create(array $data)
     {
-
+        $sql = "INSERT INTO organizations (name, description, admin_id, website, logo_url, location) VALUES (:name, :description, :admin_id, :website, :logo_url, :location);";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute(parent::map_array_with_exec_prefix($data));
     }
 
     // TODO: Read: Functions for retrieving data from the database or data store. These may include methods 
