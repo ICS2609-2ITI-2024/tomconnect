@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models;
 
+use PDO;
+
 class OrganizationModel extends Model
 {
     // TODO: Create: Functions for creating new records/entities in the database or data store.
@@ -18,7 +20,10 @@ class OrganizationModel extends Model
     // TODO: Read: Functions for retrieving data from the database or data store. These may include methods 
     public function fetch_all()
     {
-
+        $sql = "SELECT * FROM organizations WHERE is_deleted = 0;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function fetch($org_id)
