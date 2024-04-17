@@ -36,10 +36,12 @@ class OrganizationModel extends Model
     }
 
     // TODO: Update: Functions for updating existing records/entities in the database or data store.
-
     public function update($org_id, array $data)
     {
-
+        $sql = self::generate_update_statement($data);
+        $stmt = parent::connect()->prepare($sql);
+        $data['org_id'] = $org_id;
+        $stmt->execute(self::map_array_with_exec_prefix($data));
     }
 
     // TODO Functions for deleting records/entities from the database or data store.
