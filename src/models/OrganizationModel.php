@@ -48,4 +48,18 @@ class OrganizationModel extends Model
     {
         
     }
+
+    private function generate_update_statement(array $data) 
+    {
+        $sql = "UPDATE organizations SET";
+        foreach($data as $key => $value) {
+            if (end($data) == $value) {
+                $sql .= " " . $key . " = :" . $key;
+            } else {
+                $sql .= " " .  $key . " = :" . $key . ",";
+            }
+        }
+        $sql .= " WHERE org_id = :org_id";
+        return $sql;
+    }
 }
