@@ -15,8 +15,7 @@ class UserModel extends Model
         try {
             $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
             $stmt = parent::connect()->prepare($sql);
-            self::bind_parameters_to_statement($stmt, $data);
-            $stmt->execute();
+            $stmt->execute(parent::map_array_with_exec_prefix($data));
             return true;
         } catch (Exception $e) {
             echo "USER CREATION FAILED: " . $e;
