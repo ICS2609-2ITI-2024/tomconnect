@@ -48,7 +48,10 @@ class OrganizationModel extends Model
 
     public function delete($org_id)
     {
-        
+        $sql = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->execute();
     }
 
     private function generate_update_statement(array $data) 
