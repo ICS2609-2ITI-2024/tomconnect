@@ -28,7 +28,11 @@ class OrganizationModel extends Model
 
     public function fetch($org_id)
     {
-
+        $sql = "SELECT * FROM organizations WHERE is_deleted = 0 AND org_id = :org_id";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->bindParam(":org_id", $org_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // TODO: Update: Functions for updating existing records/entities in the database or data store.
