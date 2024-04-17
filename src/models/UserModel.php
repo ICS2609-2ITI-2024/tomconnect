@@ -70,10 +70,16 @@ class UserModel extends Model
         $stmt->execute();
     }
 
-    private static function bind_parameters_to_statement($prepared_statement, array $parameters)
-    {
-        foreach($parameters as $parameter_name => $parameter_value) {
-            $prepared_statement->bindParam(":" . $parameter_name, $parameter_value);
+    private static function generate_update_statement(array $data) {
+        $sql = "UPDATE users SET";
+        foreach($data as $key => $value) {
+            if (end($data) == $value) {
+                $sql .= " " . $key . " = :" . $key;
+            } else {
+                $sql .= " " .  $key . " = :" . $key . ",";
+            }
         }
+        $sql .= " WHERE user_id = :user_id";
+        return $sql;
     }
 }
