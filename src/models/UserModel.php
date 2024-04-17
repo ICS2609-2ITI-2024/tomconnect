@@ -51,16 +51,12 @@ class UserModel extends Model
     // UPDATE
     public function update($user_id, array $data)
     {
-        $sql = "UPDATE users SET";
-        foreach($data as $key => $value) {
-            $sql .= " " . $key . " = :" . $key;
-        }
-        $sql .= " WHERE user_id = :user_id";
+        $sql = self::generate_update_statement($data);
         $stmt = parent::connect()->prepare($sql);
-        self::bind_parameters_to_statement($stmt, $data);
-        $stmt->bindParam(":user_id", $user_id);
-        $stmt->execute();
+        $data['user_id'] = $user_id;
+        $stmt->execute(parent::map_array_with_exec_prefix($data));
     }
+
     // DELETE
     public function delete($user_id)
     {
