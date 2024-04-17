@@ -14,6 +14,21 @@ abstract class Model extends Database
         return $data;
     }
 
+    protected function map_array_with_exec_prefix(array $data) {
+        $transformed_array = [];
+
+        foreach($data as $key => $value) {
+            $transformed_array[self::prefixKey($key)] = $value;
+        }
+
+        return $transformed_array;
+    }
+
+    private static function prefixKey(string $key): string
+    {
+        return ":" . $key;
+    }
+
     abstract public function create(array $data);
 
     abstract public function fetch_all();
