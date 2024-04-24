@@ -10,7 +10,7 @@ use Tomconnect\Models\Model;
 class UserModel extends Model
 {
     // CREATE
-    public function create(array $data)
+    public static function create(array $data)
     {
         try {
             $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
@@ -24,19 +24,19 @@ class UserModel extends Model
     }
     // READ
 
-    public function fetch_all()
+    public static function fetch_all()
     {
         try {
             $sql = "SELECT * FROM users WHERE is_deleted = 0;";
             $stmt = parent::connect()->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo "FETCHING FAILED: " . $e;
         }
     }
     
-    public function fetch($user_id)
+    public static function fetch($user_id)
     {
         try {
             $sql = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
@@ -49,7 +49,7 @@ class UserModel extends Model
         }
     }
     // UPDATE
-    public function update($user_id, array $data)
+    public static function update($user_id, array $data)
     {
         $sql = self::generate_update_statement($data);
         $stmt = parent::connect()->prepare($sql);
@@ -58,7 +58,7 @@ class UserModel extends Model
     }
 
     // DELETE
-    public function delete($user_id)
+    public static function delete($user_id)
     {
         $sql = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
         $stmt = parent::connect()->prepare($sql);
