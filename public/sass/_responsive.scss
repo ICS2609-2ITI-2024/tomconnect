@@ -1,0 +1,35 @@
+/*
+Media queries and responsive design styles for different screen sizes.
+*/
+
+// Usaage Example
+
+// .element {
+//   width: 100%;
+//   @include respond-to(sm) {
+//     width: 50%;
+//   }
+//   @include respond-to(md) {
+//     width: 33.333%;
+//   }
+//   @include respond-to(lg) {
+//     width: 25%;
+//   }
+// }
+
+$breakpoints: (
+    xs: 0,
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    2xl: 1536px
+);
+
+@mixin respond-to($breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+        @content;
+    }
+}
+
