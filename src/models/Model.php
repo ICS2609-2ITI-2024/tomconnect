@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models;
 
+use Tomconnect\Models\Database;
+
 abstract class Model extends Database 
 {
-    protected function sanitize_input($data): string
+    protected static function sanitize_input($data): string
     {
         $data = trim($data);
         $data = stripslashes($data);
@@ -14,7 +16,7 @@ abstract class Model extends Database
         return $data;
     }
 
-    protected function map_array_with_exec_prefix(array $data) {
+    protected static function map_array_with_exec_prefix(array $data) {
         $transformed_array = [];
 
         foreach($data as $key => $value) {
@@ -29,14 +31,14 @@ abstract class Model extends Database
         return ":" . $key;
     }
 
-    abstract public function create(array $data);
+    abstract static public function create(array $data);
 
-    abstract public function fetch_all();
+    abstract static public function fetch_all();
 
-    abstract public function fetch($identifier);
+    abstract static public function fetch($identifier);
 
-    abstract public function update($identifier, array $data);
+    abstract static public function update($identifier, array $data);
 
-    abstract public function delete($identifier);
+    abstract static public function delete($identifier);
 
 }
