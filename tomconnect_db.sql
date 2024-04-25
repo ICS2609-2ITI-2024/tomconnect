@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 02:23 PM
+-- Generation Time: Apr 25, 2024 at 02:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -73,7 +73,7 @@ CREATE TABLE `posts` (
   `media_url` varchar(255) DEFAULT NULL,
   `media_type` varchar(64) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `post_status` varchar(32) NOT NULL DEFAULT 'published',
   `visibility` varchar(32) NOT NULL DEFAULT 'public',
   `is_archived` tinyint(1) NOT NULL DEFAULT 0,
