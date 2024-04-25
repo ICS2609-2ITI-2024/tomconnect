@@ -31,7 +31,7 @@ class UserModel extends Model
             $sql = "SELECT * FROM users WHERE is_deleted = 0;";
             $stmt = parent::connect()->prepare($sql);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo "FETCHING FAILED: " . $e;
         }
@@ -44,7 +44,7 @@ class UserModel extends Model
             $stmt = parent::connect()->prepare($sql);
             $stmt->bindParam(":user_id", $identifier);
             $stmt->execute();
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo "FETCHING FAILED: " . $e;
         }
