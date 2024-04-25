@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tomconnect\Models; //error
  
 use PDO;
+use Tomconnect\Models\Model;
 
 class OrganizationModel extends Model
 {

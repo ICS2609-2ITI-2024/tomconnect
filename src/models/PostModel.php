@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
+
 namespace Tomconnect\Models; //error
+
+use PDO;
+use Tomconnect\Models\Model;
 
 class PostModel extends Model
 {
@@ -53,7 +57,7 @@ class PostModel extends Model
         $stmt->execute();   
     }
 
-    private function generate_update_statement(array $data) 
+    private static function generate_update_statement(array $data) 
     {
         $sql = "UPDATE posts SET";
         foreach($data as $key => $value) {

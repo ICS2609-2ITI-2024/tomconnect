@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models;
 
+use Tomconnect\Models\Database;
+
 abstract class Model extends Database 
 {
     protected static function sanitize_input($data): string

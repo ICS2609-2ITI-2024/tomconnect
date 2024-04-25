@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models;
 
+use PDO;
 use Exception;
 use Tomconnect\Models\Model;
 
@@ -44,7 +45,7 @@ class UserModel extends Model
             $stmt->bindParam(":user_id", $identifier);
             $stmt->execute();
             return $stmt->fetch(\PDO::FETCH_ASSOC);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo "FETCHING FAILED: " . $e;
         }
     }
