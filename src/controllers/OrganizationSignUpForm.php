@@ -132,6 +132,28 @@ class OrganizationSignUpForm extends Controller
 
     }
 
+    public function validate_password()
+    {
+        if ($this->is_email_empty()) {
+            $this->store_error_message_to_session('password', self::ERROR_MESSAGES['password_required']);
+            return false;
+        }
+
+        $this->set_password();
+
+        if (!$this->is_password_length_valid()) {
+            $this->store_error_message_to_session('password', self::ERROR_MESSAGES['password_length']);
+            return false;
+        }
+
+        if (!$this->is_password_complexity_valid()) {
+            $this->store_error_message_to_session('password', self::ERROR_MESSAGES['password_complexity']);
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * Checks if the username field in the POST request is empty or not set.
      *
