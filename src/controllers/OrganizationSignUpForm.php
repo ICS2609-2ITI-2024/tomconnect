@@ -154,6 +154,21 @@ class OrganizationSignUpForm extends Controller
         return true;
     }
 
+    public function validate_confirm_password()
+    {
+        if ($this->is_confirm_password_empty()) {
+            $this->store_error_message_to_session('confirm_password', self::ERROR_MESSAGES['confirm_password_required']);
+            return false;
+        }
+
+        $this->set_confirm_password();
+
+        if ($this->is_confirm_password_match()) {
+            $this->store_error_message_to_session('confirm_password', self::ERROR_MESSAGES['password_mismatch']);
+            return false;
+        }
+    }
+
     /**
      * Checks if the username field in the POST request is empty or not set.
      *
@@ -243,6 +258,16 @@ class OrganizationSignUpForm extends Controller
     private function is_password_length_valid()
     {
         return strlen($this->password) >= self::MIN_PASSWORD_LENGTH;
+    }
+
+    private function is_confirm_password_empty()
+    {
+        return (empty($_POST['confirm_password']) || !isset($_POST['confirm_password']));
+    }
+
+    private function is_confirm_password_match()
+    {
+        return $this->password == $this->confirm_password;
     }
 
     /**
