@@ -213,7 +213,7 @@ class OrganizationSignUpForm extends Controller
         return (empty($_POST['password']) || !isset($_POST['password']));
     }
 
-    private function is_password_format_valid()
+    private function is_password_complexity_valid()
     {
         return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/s", $this->password);
     }
