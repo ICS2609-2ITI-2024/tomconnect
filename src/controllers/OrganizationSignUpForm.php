@@ -183,23 +183,6 @@ class OrganizationSignUpForm extends Controller
         return strlen($this->username) >= self::MIN_USERNAME_LENGTH && strlen($this->username) <= self::MAX_USERNAME_LENGTH;
     }
 
-
-    /**
-     * Stores an error message related to a specific form field in the session.
-     *
-     * This function stores an error message associated with a particular form field in the session data.
-     * It is commonly used in form validation to keep track of validation errors and display them to the user
-     * when rendering the form again.
-     *
-     * @param string $field_name The name or identifier of the form field.
-     * @param string $error_message The error message to be stored in the session.
-     * @return void
-     */
-    private function store_error_message_to_session(string $field_name, string $error_message): void
-    {
-        $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
-    }
-
     /**
      * Checks if the email field in the POST request is empty or not set.
      *
@@ -220,7 +203,25 @@ class OrganizationSignUpForm extends Controller
 
     private function is_email_taken()
     {
+        return (!empty(UserModel::find('email', $this->email)));
     }
+
+    /**
+     * Stores an error message related to a specific form field in the session.
+     *
+     * This function stores an error message associated with a particular form field in the session data.
+     * It is commonly used in form validation to keep track of validation errors and display them to the user
+     * when rendering the form again.
+     *
+     * @param string $field_name The name or identifier of the form field.
+     * @param string $error_message The error message to be stored in the session.
+     * @return void
+     */
+    private function store_error_message_to_session(string $field_name, string $error_message): void
+    {
+        $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
+    }
+
 
     /**
      * Setters
