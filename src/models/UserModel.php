@@ -10,12 +10,20 @@ use Tomconnect\Models\Model;
 
 class UserModel extends Model
 {
+    const CREATE_SQL_STATEMENT = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
+    
+    const FETCH_ALL_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0;";
+
+    const FETCH_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
+    
+    const FIND_SQL_STATEMENT = "SELECT * FROM users WHERE is_delete = 0 AND username = :username;";
+
+    const DELETE_SQL_STATEMENT = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
     // CREATE
     public static function create(array $data)
     {
         try {
-            $sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
-            $stmt = parent::connect()->prepare($sql);
+            $stmt = parent::connect()->prepare(self::CREATE_SQL_STATEMENT);
             $stmt->execute(parent::map_array_with_exec_prefix($data));
             return true;
         } catch (Exception $e) {
@@ -28,8 +36,7 @@ class UserModel extends Model
     public static function fetch_all()
     {
         try {
-            $sql = "SELECT * FROM users WHERE is_deleted = 0;";
-            $stmt = parent::connect()->prepare($sql);
+            $stmt = parent::connect()->prepare(self::FETCH_ALL_SQL_STATEMENT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -40,8 +47,7 @@ class UserModel extends Model
     public static function fetch($user_id)
     {
         try {
-            $sql = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
-            $stmt = parent::connect()->prepare($sql);
+            $stmt = parent::connect()->prepare(self::FETCH_SQL_STATEMENT);
             $stmt->bindParam(":user_id", $identifier);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -52,8 +58,7 @@ class UserModel extends Model
 
     public static function find($username)
     {
-        $sql = "SELECT * FROM users WHERE is_delete = 0 AND username = :username;";
-        $stmt = parent::connect()->prepare($sql);
+        $stmt = parent::connect()->prepare(self::FIND_SQL_STATEMENT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -69,8 +74,7 @@ class UserModel extends Model
     // DELETE
     public static function delete($user_id)
     {
-        $sql = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
-        $stmt = parent::connect()->prepare($sql);
+        $stmt = parent::connect()->prepare(self::DELETE_SQL_STATEMENT);
         $stmt->bindParam(":user_id", $user_id);
         $stmt->execute();
     }
