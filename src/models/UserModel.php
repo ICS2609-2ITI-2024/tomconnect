@@ -16,7 +16,7 @@ class UserModel extends Model
 
     const FETCH_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
     
-    const FIND_SQL_STATEMENT = "SELECT * FROM users WHERE is_delete = 0 AND username = :username;";
+    const FIND_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND username = :username;";
 
     const DELETE_SQL_STATEMENT = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
     // CREATE
@@ -59,7 +59,7 @@ class UserModel extends Model
     public static function find($username)
     {
         $stmt = parent::connect()->prepare(self::FIND_SQL_STATEMENT);
-        $stmt->execute();
+        $stmt->execute(['username' => $username]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     // UPDATE
