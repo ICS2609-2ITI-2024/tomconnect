@@ -36,7 +36,7 @@ class TagModel extends Model
     {
         $sql = "SELECT * FROM tags WHERE tag_id = :tag_id AND is_deleted = 0;";
         $stmt = parent::connect()->prepare($sql);
-        $stmt->bindParam(":post_id", $post_id);
+        $stmt->bindParam(":tag_id", $tag_id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -47,7 +47,7 @@ class TagModel extends Model
     {
         $sql = self::generate_update_statement($data);
         $stmt = parent::connect()->prepare($sql);
-        $data['post_id'] = $tag_id;
+        $data['tag_id'] = $tag_id;
         $stmt->execute(self::map_array_with_exec_prefix($data));
     }
 
@@ -57,7 +57,7 @@ class TagModel extends Model
     {
         $sql = "UPDATE tags SET is_deleted = 1 WHERE tag_id = :tag_id;";
         $stmt = parent::connect()->prepare($sql);
-        $stmt->bindParam(":post_id", $post_id);
+        $stmt->bindParam(":tag_id", $tag_id);
         $stmt->execute();
     }
 
@@ -66,7 +66,7 @@ class TagModel extends Model
         $sql = "UPDATE tags SET";
         foreach ($data as $key => $value) {
             if (end($data) == $value) {
-                $sql .= " " . $key . " = :" . $key . ",";
+                $sql .= " " . $key . " = :" . $key;
             } else {
                 $sql .= " " . $key . " = :" . $key . ",";
             }
