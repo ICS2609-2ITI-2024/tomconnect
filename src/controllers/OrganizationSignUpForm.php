@@ -134,7 +134,7 @@ class OrganizationSignUpForm extends Controller
 
     public function validate_password()
     {
-        if ($this->is_email_empty()) {
+        if ($this->is_password_empty()) {
             $this->store_error_message_to_session('password', self::ERROR_MESSAGES['password_required']);
             return false;
         }
