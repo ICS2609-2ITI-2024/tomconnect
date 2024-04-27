@@ -284,4 +284,9 @@ class OrganizationSignUpForm extends Controller
         $this->password = self::sanitize_input($_POST['password']);
     }
 
+    private function set_confirm_password(): void
+    {
+        $this->confirm_password = self::sanitize_input($_POST['confirm_password']);
+    }
+
 }
