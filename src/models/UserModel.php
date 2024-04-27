@@ -49,6 +49,14 @@ class UserModel extends Model
             echo "FETCHING FAILED: " . $e;
         }
     }
+
+    public static function find($username)
+    {
+        $sql = "SELECT * FROM users WHERE is_delete = 0 AND username = :username;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     // UPDATE
     public static function update($user_id, array $data)
     {
