@@ -267,7 +267,10 @@ class OrganizationSignUpForm extends Controller
 
     private function is_confirm_password_match()
     {
-        return $this->password == $this->confirm_password;
+        if (isset($this->password)) {
+            return $this->password ==  $this->confirm_password;
+        } 
+        return false;
     }
 
     /**
