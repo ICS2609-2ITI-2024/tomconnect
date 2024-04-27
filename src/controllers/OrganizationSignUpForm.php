@@ -4,7 +4,7 @@ namespace Tomconnect\Controllers;
 
 use Tomconnect\Models\UserModel;
 
-class SignUpForm
+class OrganizationSignUpForm extends Controller
 {
     private $username;
     private $email;
