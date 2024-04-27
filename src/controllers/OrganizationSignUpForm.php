@@ -71,6 +71,8 @@ class OrganizationSignUpForm extends Controller
      */
     const MAX_USERNAME_LENGTH = 20;
 
+    const MIN_PASSWORD_LENGTH = 8;
+
     /**
      * Validates the username submitted in the form.
      *
@@ -204,6 +206,21 @@ class OrganizationSignUpForm extends Controller
     private function is_email_taken()
     {
         return (!empty(UserModel::find('email', $this->email)));
+    }
+
+    private function is_password_empty()
+    {
+        return (empty($_POST['password']) || !isset($_POST['password']));
+    }
+
+    private function is_password_format_valid()
+    {
+        return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/s", $this->password);
+    }
+
+    private function is_password_length_valid()
+    {
+        return strlen($this->password) >= self::MIN_PASSWORD_LENGTH;
     }
 
     /**
