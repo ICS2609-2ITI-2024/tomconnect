@@ -109,6 +109,27 @@ class OrganizationSignUpForm extends Controller
         return true;
     }
 
+    public function validate_email()
+    {
+        if ($this->is_email_empty()) {
+            $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_required']);
+            return false;
+        }
+
+        $this->set_email();
+
+        if (!$this->is_email_format_valid()) {
+            $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_format']);
+            return false;
+        }
+
+        if ($this->is_email_taken()) {
+            $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_exists']);
+            return false;
+        }
+
+    }
+
     /**
      * Checks if the username field in the POST request is empty or not set.
      *
