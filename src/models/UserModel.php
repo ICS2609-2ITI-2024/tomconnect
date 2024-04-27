@@ -14,9 +14,9 @@ class UserModel extends Model
     
     const FETCH_ALL_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0;";
 
-    const FETCH_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id";
+    const FETCH_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND user_id = :user_id;";
     
-    const FIND_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0 AND username = :username;";
+    const FIND_SQL_STATEMENT_PREFIX = "SELECT * FROM users WHERE is_deleted = 0 AND";
 
     const DELETE_SQL_STATEMENT = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
     // CREATE
@@ -56,10 +56,11 @@ class UserModel extends Model
         }
     }
 
-    public static function find($username)
+    public static function find(string $column, string $value)
     {
-        $stmt = parent::connect()->prepare(self::FIND_SQL_STATEMENT);
-        $stmt->execute(['username' => $username]);
+        $sql = self::FIND_SQL_STATEMENT_PREFIX . " " . $column . " = :" . $column . ";";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([(":" . $column) => $value]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     // UPDATE
@@ -79,7 +80,8 @@ class UserModel extends Model
         $stmt->execute();
     }
 
-    private static function generate_update_statement(array $data) {
+    private static function generate_update_statement(array $data) 
+    {
         $sql = "UPDATE users SET";
         foreach($data as $key => $value) {
             if (end($data) == $value) {
