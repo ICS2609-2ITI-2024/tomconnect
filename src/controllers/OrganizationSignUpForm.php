@@ -146,7 +146,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function is_username_taken(): bool
     {
-        return (!empty(UserModel::find($this->username)));
+        return (!empty(UserModel::find('username', $this->username)));
     }
 
     /**
@@ -159,22 +159,9 @@ class OrganizationSignUpForm extends Controller
      */
     private function is_username_length_valid(): bool
     {
-        return strlen($this->username) >= self::MIN_USERNAME_LENGTH || strlen($this->username) <= self::MAX_USERNAME_LENGTH;
+        return strlen($this->username) >= self::MIN_USERNAME_LENGTH && strlen($this->username) <= self::MAX_USERNAME_LENGTH;
     }
 
-    /**
-     * Sets the username attribute by sanitizing the input data.
-     *
-     * This function sets the value of the username attribute by sanitizing the input data obtained from the $_POST array.
-     * Sanitization helps prevent security vulnerabilities such as cross-site scripting (XSS) attacks by removing potentially
-     * harmful characters or tags from the input.
-     *
-     * @return void
-     */
-    private function set_username(): void
-    {
-        $this->username = strtolower(self::sanitize_input($_POST['username']));
-    }
 
     /**
      * Stores an error message related to a specific form field in the session.
@@ -204,4 +191,31 @@ class OrganizationSignUpForm extends Controller
     {
         return (empty($_POST['email']) || !isset($_POST['email']));
     }
+
+    private function is_email_format_valid()
+    {
+        return (filter_var($this->email, FILTER_VALIDATE_EMAIL));
+    }
+
+    private function is_email_taken()
+    {
+    }
+
+    /**
+     * Setters
+     * 
+     * These functions sets the value of this class' attribute by sanitizing the input data obtained from the $_POST array.
+     * Sanitization helps prevent security vulnerabilities such as cross-site scripting (XSS) attacks by removing potentially
+     * harmful characters or tags from the input.
+     */
+    private function set_username(): void
+    {
+        $this->username = strtolower(self::sanitize_input($_POST['username']));
+    }
+
+    private function set_email(): void
+    {
+        $this->email = strtolower(self::sanitize_input($_POST['email']));
+    }
+
 }
