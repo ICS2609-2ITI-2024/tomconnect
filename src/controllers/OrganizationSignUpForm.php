@@ -1,4 +1,6 @@
 <?php
+/* The class `OrganizationSignUpForm` in the namespace `Tomconnect\Controllers` handles validation and
+processing of user input for organization sign-up form. */
 
 namespace Tomconnect\Controllers;
 
@@ -12,15 +14,16 @@ class OrganizationSignUpForm extends Controller
     private $confirm_password;
     private $organization_name;
     private $organization_description;
-    const FIELDs = [
-        'username',
-        'email',
-        'password1',
-        'password2',
-        'organization_name',
-        'organization_description'
-    ];
 
+    /**
+     * Error messages used for form validation and error handling.
+     *
+     * This constant defines an array of error messages commonly used for form validation and error handling.
+     * Each error message is associated with a specific validation rule or error condition encountered during form processing.
+     * These messages provide feedback to users regarding input errors and guide them in correcting their submissions.
+     *
+     * @var array Error messages for form validation and error handling.
+     */
     const ERROR_MESSAGES = array(
         'username_required' => "Username is required.",
         'username_length' => "Username must be between 4 and 20 characters.",
@@ -37,69 +40,155 @@ class OrganizationSignUpForm extends Controller
         'terms_required' => "You must agree to the Terms and Conditions to sign up."
     );
 
+    /**
+     * Suffix used for error message session keys.
+     *
+     * This constant defines the suffix appended to form field names to construct session keys
+     * for storing error messages related to those fields. It is commonly used in form validation
+     * and error handling mechanisms to associate error messages with specific form fields.
+     *
+     * @var string Suffix used for error message session keys.
+     */
     const ERROR_MESSAGE_SUFFIX = "_error_message";
 
-    private  function store_error_message_to_session(string $field_name, string $error_message)
-    {
-        $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
-    }
+    /**
+     * Minimum length allowed for usernames
+     * 
+     * This constant defines the maximum length allowed for usernames in the application
+     * Usernames exceeding this length will be considered invalid and may trigger validation errors
+     * 
+     * @var int Minimum length allowed for usernames
+     */
+    const MIN_USERNAME_LENGTH = 4;
 
-    private function is_username_empty()
-    {
-        if (empty($_POST['username']) || !isset($_POST['username'])) {
-            return false;
-        }
-        return true;
-    }
+    /**
+     * Maximum length allowed for usernames.
+     *
+     * This constant defines the maximum length allowed for usernames in the application.
+     * Usernames exceeding this length will be considered invalid and may trigger validation errors.
+     *
+     * @var int Maximum length allowed for usernames.
+     */
+    const MAX_USERNAME_LENGTH = 20;
 
+    /**
+     * Validates the username submitted in the form.
+     *
+     * This method performs validation checks on the username submitted via a form, including checks for
+     * emptiness, length validity, format validity, and uniqueness. If any validation check fails, an
+     * appropriate error message is stored in the session, and the method returns false. Otherwise, if
+     * all validation checks pass, the method returns true, indicating that the username is valid.
+     *
+     * @return bool True if the username is valid, false otherwise.
+     */
     public function validate_username()
     {
-        if (!$this->is_username_empty()) {
+        if ($this->is_username_empty()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_required']);
             return false;
         }
+
+        // store the username if it is already set
         $this->set_username();
+
         if (!$this->is_username_length_valid()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_length']);
             return false;
         }
+
         if (!$this->is_username_format_valid()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_format']);
             return false;
         }
+
         if ($this->is_username_taken()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_taken']);
             return false;
         }
+
         return true;
     }
 
+    /**
+     * Checks if the username field in the POST request is empty or not set.
+     *
+     * This function determines whether the 'username' field in the $_POST array is empty or not set.
+     * It is commonly used in form validation to ensure that a required field is provided in the HTTP POST request.
+     *
+     * @return bool True if the 'username' field is empty and is not set, false otherwise.
+     */
+    private function is_username_empty()
+    {
+        return (empty($_POST['username']) || !isset($_POST['username']));
+    }
+
+    /**
+     * Checks if the format of the username is valid.
+     *
+     * This function validates the format of the username against a regular expression pattern.
+     * The username must start with a letter (case-insensitive), followed by 2 to 23 alphanumeric characters or underscores,
+     * and it must not end with an underscore.
+     *
+     * @return bool True if the username format is valid, false otherwise.
+     */
     private function is_username_format_valid()
     {
-        if (preg_match('/^[a-z]\w{2,23}[^_]$/i', $this->username)) {
-            return true;
-        }
-        return false;
+        return (preg_match('/^[a-z]\w{4,20}[^_]$/i', $this->username));
     }
 
+    /**
+     * Checks if a username is already taken by another user.
+     *
+     * This function queries the database to determine if the provided username already exists in the user database.
+     * It is commonly used during user registration to ensure that each username is unique and not already in use by another user.
+     *
+     * @return bool True if the username is taken, false otherwise.
+     */
     private function is_username_taken()
     {
-        if (empty(UserModel::find($this->username))) {
-            return false;
-        }
-        return true;
+        return (!empty(UserModel::find($this->username)));
     }
 
-    private function is_username_length_valid()
+    /**
+     * Checks if the length of the username is within the valid range.
+     *
+     * This function validates the length of the username to ensure it meets the required criteria.
+     * Usernames must be at least 4 characters long and no longer than 20 characters.
+     *
+     * @return bool True if the username length is valid, false otherwise.
+     */
+    private function is_username_length_valid(): bool
     {
-        if (strlen($this->username) < 4 || strlen($this->username) > 20) {
-            return false;
-        }
-        return true;
+        return strlen($this->username) >= self::MIN_USERNAME_LENGTH || strlen($this->username) <= self::MAX_USERNAME_LENGTH;
     }
 
-    private function set_username()
+    /**
+     * Sets the username attribute by sanitizing the input data.
+     *
+     * This function sets the value of the username attribute by sanitizing the input data obtained from the $_POST array.
+     * Sanitization helps prevent security vulnerabilities such as cross-site scripting (XSS) attacks by removing potentially
+     * harmful characters or tags from the input.
+     *
+     * @return void
+     */
+    private function set_username(): void
     {
-        $this->username = self::sanitize_input($_POST['username']);
+        $this->username = strtolower(self::sanitize_input($_POST['username']));
+    }
+
+    /**
+     * Stores an error message related to a specific form field in the session.
+     *
+     * This function stores an error message associated with a particular form field in the session data.
+     * It is commonly used in form validation to keep track of validation errors and display them to the user
+     * when rendering the form again.
+     *
+     * @param string $field_name The name or identifier of the form field.
+     * @param string $error_message The error message to be stored in the session.
+     * @return void
+     */
+    private function store_error_message_to_session(string $field_name, string $error_message): void
+    {
+        $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
     }
 }
