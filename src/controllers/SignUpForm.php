@@ -39,7 +39,7 @@ class SignUpForm
 
     const ERROR_MESSAGE_SUFFIX = "_error_message";
 
-    private function store_error_message_to_session(string $field_name, string $error_message)
+    private  function store_error_message_to_session(string $field_name, string $error_message)
     {
         $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
     }
@@ -56,17 +56,30 @@ class SignUpForm
     {
         if (!$this->is_username_empty()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_required']);
-            return;
+            return false;
         }
         $this->set_username();
         if (!$this->is_username_length_valid()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_length']);
-            return;
+            return false;
+        }
+        if (!$this->is_username_format_valid()) {
+            $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_format']);
+            return false;
         }
         if ($this->is_username_taken()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_taken']);
-            return;
+            return false;
         }
+        return true;
+    }
+
+    private function is_username_format_valid()
+    {
+        if (preg_match('/^[a-z]\w{2,23}[^_]$/i', $this->username)) {
+            return true;
+        }
+        return false;
     }
 
     private function is_username_taken()
@@ -76,7 +89,6 @@ class SignUpForm
         }
         return true;
     }
-
 
     private function is_username_length_valid()
     {
