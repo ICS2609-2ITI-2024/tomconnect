@@ -8,12 +8,12 @@ use Tomconnect\Models\UserModel;
 
 class OrganizationSignUpForm extends Controller
 {
-    private $username;
-    private $email;
-    private $password;
-    private $confirm_password;
-    private $organization_name;
-    private $organization_description;
+    private string $username;
+    private string $email;
+    private string $password;
+    private string $confirm_password;
+    private string $organization_name;
+    private string $organization_description;
 
     /**
      * Error messages used for form validation and error handling.
@@ -81,7 +81,7 @@ class OrganizationSignUpForm extends Controller
      *
      * @return bool True if the username is valid, false otherwise.
      */
-    public function validate_username()
+    public function validate_username(): bool
     {
         if ($this->is_username_empty()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_required']);
@@ -117,7 +117,7 @@ class OrganizationSignUpForm extends Controller
      *
      * @return bool True if the 'username' field is empty and is not set, false otherwise.
      */
-    private function is_username_empty()
+    private function is_username_empty(): bool
     {
         return (empty($_POST['username']) || !isset($_POST['username']));
     }
@@ -131,7 +131,7 @@ class OrganizationSignUpForm extends Controller
      *
      * @return bool True if the username format is valid, false otherwise.
      */
-    private function is_username_format_valid()
+    private function is_username_format_valid(): bool
     {
         return (preg_match('/^[a-z]\w{4,20}[^_]$/i', $this->username));
     }
@@ -144,7 +144,7 @@ class OrganizationSignUpForm extends Controller
      *
      * @return bool True if the username is taken, false otherwise.
      */
-    private function is_username_taken()
+    private function is_username_taken(): bool
     {
         return (!empty(UserModel::find($this->username)));
     }
@@ -192,6 +192,14 @@ class OrganizationSignUpForm extends Controller
         $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
     }
 
+    /**
+     * Checks if the email field in the POST request is empty or not set.
+     *
+     * This function determines whether the 'email' field in the $_POST array is empty or not set.
+     * It is commonly used in form validation to ensure that a required field is provided in the HTTP POST request.
+     *
+     * @return bool True if the 'email' field is empty and is not set, false otherwise.
+     */
     private function is_email_empty(): bool
     {
         return (empty($_POST['email']) || !isset($_POST['email']));
