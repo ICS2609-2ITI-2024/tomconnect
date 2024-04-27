@@ -191,4 +191,9 @@ class OrganizationSignUpForm extends Controller
     {
         $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
     }
+
+    private function is_email_empty(): bool
+    {
+        return (empty($_POST['email']) || !isset($_POST['email']));
+    }
 }
