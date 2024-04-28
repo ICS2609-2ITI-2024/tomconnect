@@ -37,6 +37,8 @@ class OrganizationSignUpForm extends Controller
         'password_complexity' => "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
         'confirm_password_required' => "Confirm Password is required.",
         'password_mismatch' => "Passwords do not match.",
+        'organization_name_required' => "Organization Name is required",
+        'organization_name_format' => "Please enter a valid organization name",
         'terms_required' => "You must agree to the Terms and Conditions to sign up."
     );
 
@@ -72,6 +74,10 @@ class OrganizationSignUpForm extends Controller
     const MAX_USERNAME_LENGTH = 20;
 
     const MIN_PASSWORD_LENGTH = 8;
+
+    const USERNAME_FORMAT_REGEX = "/^[a-z]\w{4,20}[^_]$/i";
+
+    const PASSWORD_COMPLEXITY_REGEX = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/s";
 
     /**
      * Validates the username submitted in the form.
@@ -130,6 +136,7 @@ class OrganizationSignUpForm extends Controller
             return false;
         }
 
+        return true;
     }
 
     public function validate_password()
@@ -168,6 +175,23 @@ class OrganizationSignUpForm extends Controller
             return false;
         }
     }
+    
+    public function validate_organization_name()
+    {
+        if ($this->is_organization_name_empty()) {
+            $this->store_error_message_to_session('organization_name', self::ERROR_MESSAGES['organization_name_required']);
+            return false;
+        }
+
+        $this->set_organization_name();
+
+        if (!$this->is_organization_name_format_valid()) {
+            $this->store_error_message_to_session('organization_name', self::ERROR_MESSAGES['organization_name_format']);
+            return false;
+        }
+        
+        return true;
+    }
 
     /**
      * Checks if the username field in the POST request is empty or not set.
@@ -193,7 +217,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function is_username_format_valid(): bool
     {
-        return (preg_match('/^[a-z]\w{4,20}[^_]$/i', $this->username));
+        return (preg_match(self::USERNAME_FORMAT_REGEX, $this->username));
     }
 
     /**
@@ -252,7 +276,7 @@ class OrganizationSignUpForm extends Controller
 
     private function is_password_complexity_valid()
     {
-        return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/s", $this->password);
+        return preg_match(self::PASSWORD_COMPLEXITY_REGEX, $this->password);
     }
 
     private function is_password_length_valid()
@@ -273,6 +297,16 @@ class OrganizationSignUpForm extends Controller
         return false;
     }
 
+    private function is_organization_name_empty()
+    {
+        return (empty($_POST['organization_name']) || !isset($_POST['organization_name']));
+    }
+
+    private function is_organization_name_format_valid()
+    {
+        return (preg_match("/^[a-zA-Z0-9\s.'(),-]$/s", $this->organization_name));
+    }
+
     /**
      * Stores an error message related to a specific form field in the session.
      *
@@ -289,7 +323,6 @@ class OrganizationSignUpForm extends Controller
         $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
     }
 
-
     /**
      * Setters
      * 
@@ -299,7 +332,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function set_username(): void
     {
-        $this->username = strtolower(self::sanitize_input($_POST['username']));
+        $this->username = self::sanitize_input($_POST['username']);
     }
 
     private function set_email(): void
@@ -317,4 +350,8 @@ class OrganizationSignUpForm extends Controller
         $this->confirm_password = self::sanitize_input($_POST['confirm_password']);
     }
 
+    private function set_organization_name(): void
+    {
+        $this->organization_name = self::sanitize_input($_POST['organization_name']);
+    }
 }
