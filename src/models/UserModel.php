@@ -10,7 +10,7 @@ use Tomconnect\Models\Model;
 
 class UserModel extends Model
 {
-    const CREATE_SQL_STATEMENT = "INSERT INTO users (username, email, password_hash, first_name, last_name, profile_picture_url) VALUES (:username, :email, :password_hash, :first_name, :last_name, :profile_picture_url);";
+    const CREATE_SQL_STATEMENT = "INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash);";
     
     const FETCH_ALL_SQL_STATEMENT = "SELECT * FROM users WHERE is_deleted = 0;";
 
@@ -19,6 +19,8 @@ class UserModel extends Model
     const FIND_SQL_STATEMENT_PREFIX = "SELECT * FROM users WHERE is_deleted = 0 AND";
 
     const DELETE_SQL_STATEMENT = "UPDATE users SET is_deleted = 1 WHERE user_id = :user_id;";
+
+    const GET_ID_SQL_STATEMENT = "SELECT user_id FROM users where username = :username AND email = :email;";
     // CREATE
     public static function create(array $data)
     {
@@ -61,6 +63,13 @@ class UserModel extends Model
         $sql = self::FIND_SQL_STATEMENT_PREFIX . " " . $column . " = :" . $column . ";";
         $stmt = parent::connect()->prepare($sql);
         $stmt->execute([(":" . $column) => $value]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function get_id($username, $email)
+    {
+        $stmt = parent::connect()->prepare(self::GET_ID_SQL_STATEMENT);
+        $stmt->execute([':username' => $username, ':email' => $email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     // UPDATE
