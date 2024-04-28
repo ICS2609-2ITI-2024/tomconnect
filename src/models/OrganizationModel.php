@@ -13,7 +13,7 @@ class OrganizationModel extends Model
 
     public static function create(array $data)
     {
-        $sql = "INSERT INTO organizations (name, description, admin_id, website, logo_url, location) VALUES (:name, :description, :admin_id, :website, :logo_url, :location);";
+        $sql = "INSERT INTO organizations (name, admin_id) VALUES (:name, :admin_id);";
         $stmt = parent::connect()->prepare($sql);
         $stmt->execute(parent::map_array_with_exec_prefix($data));
     }
@@ -33,6 +33,14 @@ class OrganizationModel extends Model
         $stmt = parent::connect()->prepare($sql);
         $stmt->bindParam(":org_id", $org_id);
         $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function get_id($organization_name)
+    {
+        $sql = "SELECT org_id FROM organizations WHERE name = :name;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':name' => $organization_name]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
