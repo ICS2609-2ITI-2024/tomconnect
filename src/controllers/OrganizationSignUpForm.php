@@ -79,6 +79,17 @@ class OrganizationSignUpForm extends Controller
 
     const PASSWORD_COMPLEXITY_REGEX = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/s";
 
+    const ORGANIZATION_NAME_FORMAT_REGEX = "/^[a-zA-Z0-9\s.'(),-]$/s";
+
+    public function validate_fields()
+    {
+        $this->validate_username();
+        $this->validate_email();
+        $this->validate_password();
+        $this->validate_confirm_password();
+        $this->validate_organization_name();
+    }
+
     /**
      * Validates the username submitted in the form.
      *
@@ -89,7 +100,7 @@ class OrganizationSignUpForm extends Controller
      *
      * @return bool True if the username is valid, false otherwise.
      */
-    public function validate_username(): bool
+    private function validate_username(): bool
     {
         if ($this->is_username_empty()) {
             $this->store_error_message_to_session('username', self::ERROR_MESSAGES['username_required']);
@@ -117,7 +128,7 @@ class OrganizationSignUpForm extends Controller
         return true;
     }
 
-    public function validate_email()
+    private function validate_email()
     {
         if ($this->is_email_empty()) {
             $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_required']);
@@ -139,7 +150,7 @@ class OrganizationSignUpForm extends Controller
         return true;
     }
 
-    public function validate_password()
+    private function validate_password()
     {
         if ($this->is_password_empty()) {
             $this->store_error_message_to_session('password', self::ERROR_MESSAGES['password_required']);
@@ -161,7 +172,7 @@ class OrganizationSignUpForm extends Controller
         return true;
     }
 
-    public function validate_confirm_password()
+    private function validate_confirm_password()
     {
         if ($this->is_confirm_password_empty()) {
             $this->store_error_message_to_session('confirm_password', self::ERROR_MESSAGES['confirm_password_required']);
@@ -176,7 +187,7 @@ class OrganizationSignUpForm extends Controller
         }
     }
     
-    public function validate_organization_name()
+    private function validate_organization_name()
     {
         if ($this->is_organization_name_empty()) {
             $this->store_error_message_to_session('organization_name', self::ERROR_MESSAGES['organization_name_required']);
@@ -304,7 +315,7 @@ class OrganizationSignUpForm extends Controller
 
     private function is_organization_name_format_valid()
     {
-        return (preg_match("/^[a-zA-Z0-9\s.'(),-]$/s", $this->organization_name));
+        return (preg_match(self::ORGANIZATION_NAME_FORMAT_REGEX, $this->organization_name));
     }
 
     /**
