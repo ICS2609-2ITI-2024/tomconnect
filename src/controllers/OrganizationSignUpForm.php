@@ -4,6 +4,7 @@ processing of user input for organization sign-up form. */
 
 namespace Tomconnect\Controllers;
 
+use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Models\UserModel;
 
 class OrganizationSignUpForm extends Controller
@@ -38,7 +39,6 @@ class OrganizationSignUpForm extends Controller
         'confirm_password_required' => "Confirm Password is required.",
         'password_mismatch' => "Passwords do not match.",
         'organization_name_required' => "Organization Name is required",
-        'organization_name_format' => "Please enter a valid organization name",
         'terms_required' => "You must agree to the Terms and Conditions to sign up."
     );
 
@@ -81,13 +81,44 @@ class OrganizationSignUpForm extends Controller
 
     const ORGANIZATION_NAME_FORMAT_REGEX = "/^[a-zA-Z0-9\s.'(),-]$/s";
 
-    public function validate_fields()
+    const PASSWORD_OPTIONS = ['cost' => 12];
+
+    public function handle_field()
     {
-        $this->validate_username();
-        $this->validate_email();
-        $this->validate_password();
-        $this->validate_confirm_password();
-        $this->validate_organization_name();
+        if ($this->validate_fields()) {
+            $this->store_data_to_db();
+            return true;
+        }
+        return false;
+    }
+
+    private function validate_fields()
+    {
+        return (
+            $this->validate_username() &&
+            $this->validate_email() &&
+            $this->validate_password() &&
+            $this->validate_confirm_password() &&
+            $this->validate_organization_name() &&
+            $this->validate_organization_description()
+        );
+    }
+
+    private function store_data_to_db()
+    {
+        UserModel::create($this->generate_user_data_array());
+        OrganizationModel::create($this->generate_organization_user_data_array());
+        OrganizationModel::update(OrganizationModel::get_id($this->organization_name)['org_id'], ['description' => $this->organization_description]);
+    }
+
+    private function generate_user_data_array()
+    {
+        return array('username' => $this->username, 'email' => $this->email, 'password_hash' => $this->get_hash_password());
+    }
+
+    private function generate_organization_user_data_array()
+    {
+        return array('name' => $this->organization_name, 'admin_id' => UserModel::get_id($this->username, $this->email)['user_id']);
     }
 
     /**
@@ -181,10 +212,12 @@ class OrganizationSignUpForm extends Controller
 
         $this->set_confirm_password();
 
-        if ($this->is_confirm_password_match()) {
+        if (!$this->is_confirm_password_match()) {
             $this->store_error_message_to_session('confirm_password', self::ERROR_MESSAGES['password_mismatch']);
             return false;
         }
+
+        return true;
     }
     
     private function validate_organization_name()
@@ -196,11 +229,17 @@ class OrganizationSignUpForm extends Controller
 
         $this->set_organization_name();
 
-        if (!$this->is_organization_name_format_valid()) {
-            $this->store_error_message_to_session('organization_name', self::ERROR_MESSAGES['organization_name_format']);
-            return false;
+        return true;
+    }
+
+    private function validate_organization_description()
+    {
+        if ($this->is_organization_description_empty()) {
+            $this->organization_description = '';
+        } else {
+            $this->set_organization_description();
         }
-        
+
         return true;
     }
 
@@ -313,9 +352,9 @@ class OrganizationSignUpForm extends Controller
         return (empty($_POST['organization_name']) || !isset($_POST['organization_name']));
     }
 
-    private function is_organization_name_format_valid()
+    private function is_organization_description_empty()
     {
-        return (preg_match(self::ORGANIZATION_NAME_FORMAT_REGEX, $this->organization_name));
+        return (empty($_POST['organization_description']) || !isset($_POST['organization_descriptionjk']));
     }
 
     /**
@@ -332,6 +371,11 @@ class OrganizationSignUpForm extends Controller
     private function store_error_message_to_session(string $field_name, string $error_message): void
     {
         $_SESSION[$field_name . self::ERROR_MESSAGE_SUFFIX] = $error_message;
+    }
+
+    private function get_hash_password(): string
+    {
+        return password_hash($this->password, PASSWORD_BCRYPT, self::PASSWORD_OPTIONS);
     }
 
     /**
@@ -364,5 +408,10 @@ class OrganizationSignUpForm extends Controller
     private function set_organization_name(): void
     {
         $this->organization_name = self::sanitize_input($_POST['organization_name']);
+    }
+
+    private function set_organization_description(): void
+    {
+        $this->organization_description = self::sanitize_input($_POST['organization_desciprtion']);
     }
 }
