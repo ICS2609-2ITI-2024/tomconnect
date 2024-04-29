@@ -387,7 +387,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function set_username(): void
     {
-        $this->username = self::sanitize_input($_POST['username']);
+        $this->username = strtolower(self::sanitize_input($_POST['username']));
     }
 
     private function set_email(): void
