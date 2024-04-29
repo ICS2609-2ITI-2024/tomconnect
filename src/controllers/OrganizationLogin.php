@@ -19,7 +19,14 @@ class OrganizationLogin extends Controller
 
     const ERROR_MESSAGE_SUFFIX = "_error_message";
 
-    public function validate_fields()
+    public function handle_login()
+    {
+        if ($this->validate_fields()) {
+            $this->store_logged_user_to_session();
+        }
+    }
+
+    private function validate_fields()
     {
         if ($this->is_credential_empty() || $this->is_password_empty()) {
             $this->store_error_message_to_session('login', self::ERROR_MESSAGES['missing_fields']);
@@ -33,9 +40,17 @@ class OrganizationLogin extends Controller
             return false;
         }
 
-        $_SESSION['is_logged_in'] = true;
-        $_SESSION['logged_user'] = self::$identifier;
         return true;
+    }
+
+    private function store_logged_user_to_session() 
+    {
+        $_SESSION['is_logged_in'] = true;
+        if ($this->is_email()) {
+            $_SESSION['logged_user'] = UserModel::find('email', self::$identifier)['username'];
+        } else {
+            $_SESSION['logged_user'] = UserModel::find('username', self::$identifier)['username'];
+        }
     }
 
     private function is_valid_password()
