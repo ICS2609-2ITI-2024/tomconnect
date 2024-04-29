@@ -23,7 +23,9 @@ class OrganizationLogin extends Controller
     {
         if ($this->validate_fields()) {
             $this->store_logged_user_to_session();
+            return true;
         }
+        return false;
     }
 
     private function validate_fields()
