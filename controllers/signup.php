@@ -13,7 +13,7 @@ session_start();
 
 $sign = new OrganizationSignUpForm();
 
-if ($sign->handle_field()) {
+if ($sign->handle_sign_up()) {
     header("Location: " . "../public/signup_success.php");
     die();
 }
