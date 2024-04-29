@@ -83,7 +83,7 @@ class OrganizationLogin extends Controller
 
     private function set_identifier()
     {
-        self::$identifier = self::sanitize_input($_POST['identifier']);
+        self::$identifier = strtolower(self::sanitize_input($_POST['identifier']));
     }
     private function store_error_message_to_session(string $field_name, string $error_message): void
     {
