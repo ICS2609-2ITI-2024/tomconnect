@@ -16,4 +16,7 @@ $sign = new OrganizationSignUpForm();
 if ($sign->handle_sign_up()) {
     header("Location: " . "../public/signup_success.php");
     die();
+} else {
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    die();
 }

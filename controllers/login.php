@@ -11,11 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST")
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
 use Tomconnect\Controllers\OrganizationLogin;
-use Tomconnect\Models\UserModel;
 
 $login = new OrganizationLogin();
-$login->validate_fields();
 
-
-if (isset($_SESSION['login_error_message'])) echo $_SESSION['login_error_message'];
-unset($_SESSION['login_error_message']);
+if ($login->handle_login()) {
+    header("Location: " . "../public/index.php");
+    die();
+} else {
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    die();
+}
