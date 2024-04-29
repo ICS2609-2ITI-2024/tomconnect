@@ -83,7 +83,7 @@ class OrganizationSignUpForm extends Controller
 
     const PASSWORD_OPTIONS = ['cost' => 12];
 
-    public function handle_field()
+    public function handle_sign_up()
     {
         if ($this->validate_fields()) {
             $this->store_data_to_db();
