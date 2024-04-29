@@ -76,13 +76,9 @@ class UserModel extends Model
      */
     public static function fetch_all()
     {
-        try {
-            $stmt = parent::connect()->prepare(self::FETCH_ALL_SQL_STATEMENT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (Exception $e) {
-            echo "FETCHING FAILED: " . $e;
-        }
+        $stmt = parent::connect()->prepare(self::FETCH_ALL_SQL_STATEMENT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
