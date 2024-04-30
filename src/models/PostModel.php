@@ -83,6 +83,14 @@ class PostModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function search_from_column(string $column, $query)
+    {
+        $sql = "SELECT * FROM posts WHERE is_deleted = 0 AND " . $column . " = :q;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':q' => $query]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function search(string $q): array
     {
         $stmt = parent::connect()->prepare(self::SEARCH_SQL_STATEMENT);
