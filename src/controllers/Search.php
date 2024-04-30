@@ -7,15 +7,31 @@ use Tomconnect\Models\PostModel;
 use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Models\TagModel;
 
-class search extends Controller
+class Search extends Controller
 {
     private $posts = [];
     private $tags = [];
 
     private $orgs = [];
 
-    public function search($query)
+    private $org_ids = [];
+
+    public function search()
     {
+        return $this->generate_results();
+    }
+
+    private function generate_results()
+    {
+        $this->set_org_ids();
+        $this->set_posts();
+        $this->set_orgs();
+        $this->remove_duplicates();
+
+        return array(
+            'posts' => $this->posts,
+            'organizations' => $this->orgs,
+        );
     }
 
     private function search_posts()
@@ -57,5 +73,9 @@ class search extends Controller
         foreach($this->search_organizations() as $org) {
             $this->org_ids[] = $org['org_id'];
         }
+    }
+
+    private function set_orgs() {
+        $this->orgs = $this->search_organizations();
     }
 }
