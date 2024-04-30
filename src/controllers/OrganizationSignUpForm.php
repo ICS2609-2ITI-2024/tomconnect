@@ -327,7 +327,7 @@ class OrganizationSignUpForm extends Controller
         $this->set_email();
 
         if (!$this->is_email_format_valid()) {
-            $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_format']);
+            $this->store_error_message_to_session('email', self::ERROR_MESSAGES['email_invalid']);
             return false;
         }
 
@@ -491,7 +491,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function is_username_format_valid(): bool
     {
-        return (preg_match(self::USERNAME_FORMAT_REGEX, $this->username));
+        return (preg_match(self::USERNAME_FORMAT_REGEX, $this->username) == 1);
     }
 
     /**
@@ -545,7 +545,7 @@ class OrganizationSignUpForm extends Controller
      * @return bool True if the email address format is valid, and false otherwise.
      * @access private
      */
-    private function is_email_format_valid(): bool
+    private function is_email_format_valid() 
     {
         return (filter_var($this->email, FILTER_VALIDATE_EMAIL));
     }
@@ -596,7 +596,7 @@ class OrganizationSignUpForm extends Controller
      */
     private function is_password_complexity_valid(): bool
     {
-        return preg_match(self::PASSWORD_COMPLEXITY_REGEX, $this->password);
+        return preg_match(self::PASSWORD_COMPLEXITY_REGEX, $this->password) == 1;
     }
 
     /**
