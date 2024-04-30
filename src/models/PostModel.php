@@ -42,6 +42,11 @@ class PostModel extends Model
     const DELETE_SQL_STATEMENT = "UPDATE posts SET is_deleted = 1 WHERE post_id = :post_id;";
 
     /**
+     * SQL statement for searching a post with a specific keyword.
+     */
+    const SEARCH_SQL_STATEMENT = "SELECT * FROM posts WHERE content LIKE :q ORDER BY created_at DESC LIMIT 50;";
+
+    /**
      * Creates a new post record in the database.
      * 
      * @param array $data An associative array containing post data.
@@ -80,8 +85,7 @@ class PostModel extends Model
 
     public static function search(string $q): array
     {
-        $sql = "SELECT * FROM posts WHERE content LIKE :q ORDER BY created_at DESC LIMIT 50;";
-        $stmt = parent::connect()->prepare($sql);
+        $stmt = parent::connect()->prepare(self::SEARCH_SQL_STATEMENT);
         $stmt->execute([':q' =>  "%" . $q . "%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
