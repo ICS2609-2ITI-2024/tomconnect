@@ -78,6 +78,14 @@ class PostModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function search(string $q): array
+    {
+        $sql = "SELECT * FROM posts WHERE content LIKE :q ORDER BY created_at DESC LIMIT 50;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':q' =>  "%" . $q . "%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Updates an existing post record in the database.
      * 
