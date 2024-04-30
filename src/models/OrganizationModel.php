@@ -95,6 +95,14 @@ class OrganizationModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function search($query)
+    {
+        $sql = "SELECT * FROM organizations WHERE name LIKE :name;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':name' => "%" . $query . "%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Updates an existing organization record in the database.
      * 
