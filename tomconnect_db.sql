@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 10:53 AM
+-- Generation Time: Apr 28, 2024 at 09:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -35,7 +35,8 @@ CREATE TABLE `events` (
   `event_end_date` date NOT NULL,
   `event_time` time NOT NULL,
   `link` varchar(255) DEFAULT NULL,
-  `location` varchar(255) NOT NULL
+  `location` varchar(255) NOT NULL,
+  `is_delete` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,7 +58,7 @@ CREATE TABLE `organizations` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
   `is_registration_open` tinyint(1) NOT NULL DEFAULT 1,
-  `registration_link` varchar(255) DEFAULT NULL
+  `registration_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -73,7 +74,7 @@ CREATE TABLE `posts` (
   `media_url` varchar(255) DEFAULT NULL,
   `media_type` varchar(64) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `post_status` varchar(32) NOT NULL DEFAULT 'published',
   `visibility` varchar(32) NOT NULL DEFAULT 'public',
   `is_archived` tinyint(1) NOT NULL DEFAULT 0,
