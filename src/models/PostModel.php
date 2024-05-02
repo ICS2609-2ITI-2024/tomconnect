@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tomconnect\Models; //error
 
+
 class PostModel extends Model
 {
     // TODO: Create: Functions for creating new records/entities in the database or data store.
