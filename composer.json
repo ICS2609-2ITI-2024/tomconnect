@@ -2,7 +2,8 @@
     "name": "group3/tomconnect",
     "autoload": {
         "psr-4": {
-            "Tomconnect\\": "src/"
+            "Tomconnect\\": "src/",
+            "Components\\": "components/"
         }
     },
     "authors": [
