@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
-use Tomconnect\Views\Components\HelloWorld;
 
 session_start();
 
-if (!isset($_SESSION['is_logged_in'])) {
-    header("Location: " . "login.php");
-    die();
-}
+// if (!isset($_SESSION['is_logged_in'])) {
+//     header("Location: " . "login.php");
+//     die();
+// }
+
+use Components\OrganizationCard;
+use Tomconnect\Models\OrganizationModel;
 
 ?>
 <!DOCTYPE html>
@@ -23,5 +25,12 @@ if (!isset($_SESSION['is_logged_in'])) {
     <title>TomConnect</title>
 </head>
 <body>
+    <div class="organization-gallery">
+    <?php 
+    foreach(OrganizationModel::fetch_all() as $organization) {
+        (new OrganizationCard())->render($organization['org_id'], $organization['cover_img_url'], $organization['name']);
+    }
+    ?>
+    </div>
 </body>
 </html>
