@@ -88,11 +88,11 @@ class OrganizationModel extends Model
      * @param string $organization_name The name of the organization.
      * @return array|null The ID of the organization, or null if not found.
      */
-    public static function get_id($organization_name): array|null
+    public static function get_id($organization_name): string
     {
         $stmt = parent::connect()->prepare(self::GET_ID_SQL_STATEMENT);
         $stmt->execute([':name' => $organization_name]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['org_id'];
     }
 
     public static function search($query)

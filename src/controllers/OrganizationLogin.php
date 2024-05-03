@@ -155,7 +155,7 @@ class OrganizationLogin extends Controller
      * @return bool True if the identifier is valid, and false otherwise.
      * @access private
      */
-    private function is_valid_identifier(): bool
+    private function is_valid_identifier()
     {
         if ($this->is_email()) {
             return $this->is_valid_email();

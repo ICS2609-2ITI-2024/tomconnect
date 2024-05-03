@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
-use Tomconnect\Views\Components\HelloWorld;
-
 session_start();
 
 if (!isset($_SESSION['is_logged_in'])) {
@@ -23,5 +21,11 @@ if (!isset($_SESSION['is_logged_in'])) {
     <title>TomConnect</title>
 </head>
 <body>
+    <form action="../controllers/post.php" method="post" enctype="multipart/form-data">
+        <textarea name="post_content" id="post_content" cols="30" rows="10">
+        </textarea>
+        <input type="file" name="img" id="img">
+        <button type="submit">Post</button>
+    </form>
 </body>
 </html>
