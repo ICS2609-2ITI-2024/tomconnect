@@ -7,6 +7,15 @@
     <!-- Bootstrap and CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="poststyle.css">
+    <!-- Fonts -->
+    <style>
+        /*MONTSERRAT FONT*/
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        /*MANROPE FONT*/
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+
     <title>PostComponent</title>
 </head>
 
@@ -23,8 +32,8 @@
                     <img src="./imagePost/ust.jpg" class="card-img-top img-fluid mainImage" alt="...">
                 </div>
                 <br>
-                <h3 class="card-title">Title</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+                <h3 class="card-title h3style">Title</h3>
+                <p class="card-text pstyle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
                     dignissimos accusantium amet similique velit iste.
                 </p>
                 <div class="container container-fluid">
