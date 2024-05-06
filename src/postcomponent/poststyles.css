@@ -1,0 +1,51 @@
+body {
+    margin: 1%;
+}
+
+.cardCustom {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.iconSize {
+    width: 25px; 
+    border-radius: 100%;
+}
+
+.nameStyle {
+    font-family: Verdana;
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.mainImageContainer {
+    height: 200px; 
+    margin-left: -3%;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.card-text {
+    font-size: 1rem; 
+}
+
+.tag {
+    font-weight: bold;
+    font-size: 80%;
+    display: inline-block;
+    border: 2px solid rgb(250, 164, 35);
+    background-color: rgb(250, 164, 35);
+    border-radius: 10px;
+    color: white;
+    padding: 2%;
+    margin-left: -4%;
+    text-align: center; 
+}
