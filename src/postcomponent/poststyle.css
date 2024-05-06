@@ -14,7 +14,15 @@ body {
 }
 
 .nameStyle {
-    font-family: Verdana;
+    font-family: "Montserrat";
+}
+
+.pstyle {
+    font-family: "Manrope";
+}
+
+.h3style {
+    font-family: "Montserrat";
 }
 
 .mainImage {
@@ -38,6 +46,7 @@ body {
 }
 
 .tag {
+    font-family: "Montserrat";
     font-weight: bold;
     font-size: 80%;
     max-height: 35px;
