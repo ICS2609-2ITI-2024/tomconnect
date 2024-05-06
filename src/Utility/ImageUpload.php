@@ -4,10 +4,11 @@ namespace Tomconnect\Utility;
 
 class ImageUpload
 {
-    const FILE_PATH = "img/";
+    // const FILE_PATH = ;
 
     const ALLOWED_TYPE = ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'tif'];
     
+    const FILE_PATH = "img/";
     private $file_name;
 
     private $file_type;
@@ -22,6 +23,8 @@ class ImageUpload
 
     private $file_actual_extension; 
     private $file_destination;
+
+    private $file_path;
 
 
     function __construct($image)
@@ -52,7 +55,7 @@ class ImageUpload
         $new_file_name = $this->generate_new_file_name();
         $this->set_file_destination($this->generate_file_destination($new_file_name));
         $this->move_file();
-        return $this->file_destination;
+        return self::FILE_PATH . $new_file_name;
     }
 
     private function is_file_extension_valid()
@@ -77,7 +80,7 @@ class ImageUpload
 
     private function generate_file_destination($filename)
     {
-        return self::FILE_PATH . $filename;
+        return dirname(dirname(__DIR__)) . "\\public\\img\\" . $filename;
     }
 
     private function move_file()

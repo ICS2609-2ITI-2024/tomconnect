@@ -24,33 +24,17 @@ if (!isset($_SESSION['logged_user']))
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
 use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Controllers\Post;
 use Tomconnect\Models\PostModel;
-use Tomconnect\Utility\ImageUpload;
 
 $logged_user = $_SESSION['logged_user'];
 
-$data = [
-    'author_id' => OrganizationModel::get_id($logged_user),
-    'content' => $_POST['post_content']
-];
+$post_controller = new Post();
 
-$image_uploader = new ImageUpload($_FILES['img']);
+$post_controller->post(OrganizationModel::get_id($logged_user));
 
-echo $image_uploader->upload();
+$post = PostModel::search_from_column('content', $_POST['content'])[0];
 
+header("Location: " . $_SERVER['HTTP_REFERER']);
+die()
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>User ID <?= OrganizationModel::get_id($logged_user) ?></h1>
-    <article class="text" id='text'>
-        <?= $data['content'] ?>
-    </article>
-</body>
-</html>

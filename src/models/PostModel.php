@@ -136,7 +136,7 @@ class PostModel extends Model
         $sql = "UPDATE posts SET";
         foreach ($data as $key => $value) {
             if (end($data) == $value) {
-                $sql .= " " . $key . " = :" . $key . ",";
+                $sql .= " " . $key . " = :" . $key;
             } else {
                 $sql .= " " . $key . " = :" . $key . ",";
             }
