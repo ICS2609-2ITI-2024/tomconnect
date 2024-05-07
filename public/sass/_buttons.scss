@@ -1,3 +1,35 @@
 /* 
     Styles for various button types and states.
 */
+@import './variables';
+@import './typography';
+
+.org-reg-button {
+    /* Background and Text color */
+    background-color: $button-color;
+    color: $neutral-1;
+
+    /* Text alignment and font */
+    text-align: center;
+    text-decoration: none;
+    font-family: $montserrat;
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    border-radius: 2rem;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: .5rem 1rem;
+
+    svg {
+        margin-right: .25rem;
+    }
+
+    &:hover {
+        background-color: $button-color-hover;
+    }
+}
