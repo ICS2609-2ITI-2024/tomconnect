@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Tomconnect\Models\PostModel;
+use Tomconnect\Components\OrgRegistrationButton;
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
@@ -54,6 +55,10 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <img src=<?= $post['media_url'] ?> alt="">
             </article>
         <?php endforeach ?>
+    </div>
+    
+    <div class="">
+        <?php OrgRegistrationButton::render('tomasino web') ?>
     </div>
 </body>
 </html>
