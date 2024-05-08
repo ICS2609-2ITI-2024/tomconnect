@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use Tomconnect\Components\PostComponent;
+use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Models\PostModel;
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
@@ -19,9 +21,9 @@ session_start();
 </head>
 <body>
     <div class="">
-        <?php PostComponent::render('Tomasino Web', 'img/663869443d3d76.63301282.jpg', 'KORONA SA ESPAÑA?
-After five years, the UST Golden Tigresses return to the UAAP volleyball finals, becoming the first team this season to book a finals ticket.
-(Artwork by Karyll Anne Bordas/TomasinoWeb)', 'img/663869443d3d76.63301282.jpg', '2024-04-30 18:25:33') ?>
+        <?php foreach(PostModel::fetch_all() as $post): ?>
+            <?php PostComponent::render(OrganizationModel::fetch($post['author_id'])['name'], OrganizationModel::fetch($post['author_id'])['logo_url'], $post['content'], $post['media_url'], $post['created_at']) ?>
+        <?php endforeach ?>
     </div>
 </body>
 </html>
