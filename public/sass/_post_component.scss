@@ -19,6 +19,11 @@
     }
 
     .author-name-and-date-published {
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+        }
         small {
             font-size: .75rem;
             line-height: 1rem;
@@ -36,7 +41,7 @@
     .profile-image {
         border-radius: 50%;
         overflow: hidden;
-        width: 7%;
+        width: 2rem;
     }
 
     .mainImageContainer {
