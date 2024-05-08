@@ -14,7 +14,7 @@ class PostComponent
                     <!-- IcBaselineAccountCircle.png -->
                     <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'img/IcBaselineAccountCircle.png' ?> alt="" class="profile-image">
                     <div class="author-name-and-date-published">
-                        <h4 class="mb-0 nameStyle"><?= ucwords($author_name) ?></h4>
+                        <h4 class="mb-0 nameStyle"><a href=""><?= ucwords($author_name) ?></a></h4>
                         <small><?= self::timeAgo(strtotime($date_published)) ?></small>
                     </div>
                 </div>
@@ -27,11 +27,11 @@ class PostComponent
                     <p class="content">
                         <?= $content ?>
                     </p>
-                    <div class="container container-fluid">
+                    <!-- <div class="container container-fluid">
                         <div class="tag">
                             <span>University-Wide</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </article>

@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
+
+require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
+
 use Tomconnect\Components\PostComponent;
 use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Models\PostModel;
-
-require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
 session_start();
 
