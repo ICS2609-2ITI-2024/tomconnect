@@ -1,8 +1,9 @@
 
 @use './normalize';
 
-@use './variables';
 @import './variables';
 @import './typography';
 @import './buttons';
 @import './event_card';
+
+@import './base';
