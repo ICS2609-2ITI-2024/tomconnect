@@ -9,6 +9,10 @@ use Tomconnect\Models\OrganizationModel;
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
+use Tomconnect\Components\PostComponent;
+use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Models\PostModel;
+
 session_start();
 
 ?>
