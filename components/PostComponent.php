@@ -11,15 +11,18 @@ class PostComponent
         <article class="post-card">
             <div class="card cardCustom">
                 <div class="author-container">
-                    <img src=<?= $profile_image_url ?> alt="" class="profile-image">
+                    <!-- IcBaselineAccountCircle.png -->
+                    <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'img/IcBaselineAccountCircle.png' ?> alt="" class="profile-image">
                     <div class="author-name-and-date-published">
-                        <h6 class="mb-0 nameStyle"><?= ucwords($author_name) ?></h6>
+                        <h4 class="mb-0 nameStyle"><?= ucwords($author_name) ?></h4>
                         <small><?= self::timeAgo(strtotime($date_published)) ?></small>
                     </div>
                 </div>
+                <?php if ($media_url != null): ?>
                 <div class="mainImageContainer">
                     <img src=<?= $media_url ?> class="card-img-top img-fluid mainImage" alt="...">
                 </div>
+                <?php endif ?>
                 <div class="content-container">
                     <p class="content">
                         <?= $content ?>
