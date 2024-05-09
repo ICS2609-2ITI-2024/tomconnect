@@ -19,11 +19,6 @@ class PostComponent
                         <small><?= self::timeAgo(strtotime($date_published)) ?></small>
                     </div>
                 </div>
-                <?php if ($media_url != null): ?>
-                <div class="mainImageContainer">
-                    <img src=<?= $media_url ?> class="card-img-top img-fluid mainImage" alt="...">
-                </div>
-                <?php endif ?>
                 <div class="content-container">
                     <p class="content">
                         <?= $content ?>
@@ -34,6 +29,11 @@ class PostComponent
                         </div>
                     </div> -->
                 </div>
+                <?php if ($media_url != null): ?>
+                <div class="mainImageContainer">
+                    <img src=<?= $media_url ?> class="card-img-top img-fluid mainImage" alt="...">
+                </div>
+                <?php endif ?>
             </div>
         </article>
 <?php
