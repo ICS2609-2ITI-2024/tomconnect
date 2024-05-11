@@ -155,7 +155,7 @@ class OrganizationLogin extends Controller
      * @return bool True if the identifier is valid, and false otherwise.
      * @access private
      */
-    private function is_valid_identifier(): bool
+    private function is_valid_identifier()
     {
         if ($this->is_email()) {
             return $this->is_valid_email();
@@ -201,7 +201,7 @@ class OrganizationLogin extends Controller
      * @return bool True if the provided username exists in the database, and false otherwise.
      * @access private
      */
-    private function is_valid_username(): bool
+    private function is_valid_username(): array
     {
         return (UserModel::find('username', self::$identifier));
     }
@@ -215,7 +215,7 @@ class OrganizationLogin extends Controller
      * @return bool True if the provided email exists in the database, and false otherwise.
      * @access private
      */
-    private function is_valid_email(): bool
+    private function is_valid_email(): array
     {
         return (UserModel::find('email', self::$identifier));
     }
