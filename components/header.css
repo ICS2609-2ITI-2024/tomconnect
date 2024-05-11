@@ -1,4 +1,11 @@
-.header {
+/*
+Specific styles for the header section if applicable
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.headerCustom {
     position: sticky;
     top: 0;
     background-color: black;
@@ -9,9 +16,13 @@
     padding: 50px;
 }
 
-.logo img {
-    display: block;
-    height: auto;
+.logo{
+    margin-top: 14px !important;
+    margin-right: -20px !important;
+    margin-bottom: -4px !important;
+    margin-left: 0px !important;
+    width: 120%;
+    overflow: hidden;
 }
 
 .col-3 {
@@ -34,13 +45,21 @@
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    height: 100px;
+    height: 30px;
+    margin-left: 50px;
+    margin-right: -250px;
+    
+}
+
+.search {
+    height: 40px;
+    width: 280px;
 }
 
 .search-bar input {
     padding: 0 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 body {
@@ -51,6 +70,9 @@ body {
 }
 
 p {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+
     margin: 0;
     color: #FFF;
     font-family: "Montserrat", sans-serif;
@@ -68,11 +90,11 @@ nav a {
     font-weight: 700;
     line-height: normal;
     text-decoration: none;
-    margin-right: 20px; /* Adjust the spacing between links */
+    margin-right: 50px;
 }
 
 .nav-list li {
-    margin-left: 20px; /* Adjust spacing between items */
+    margin-left: 10px; /* Adjust spacing between items */
 }
 
 .nav-list li:first-child {
