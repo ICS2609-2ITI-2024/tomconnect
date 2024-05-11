@@ -1,7 +1,11 @@
 /*
 Set typography-related styles such as font sizes, line heights, and font families.
 */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+// --MANROPE FONT
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import url(https://fonts.googleapis.com/css?family=Inter);
 
 $montserrat: "Montserrat", sans-serif;
