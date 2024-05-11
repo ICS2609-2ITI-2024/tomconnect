@@ -16,9 +16,10 @@ use Components\OrganizationCard;
 use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Components\Footer;
 use Tomconnect\Components\Header;
+use Tomconnect\Components\NavbarComponent;
 
 
 Header::render('tomconnect');
-
+NavbarComponent::render();
 Footer::render();
 ?>
