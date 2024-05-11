@@ -14,23 +14,11 @@ session_start();
 
 use Components\OrganizationCard;
 use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Components\Footer;
+use Tomconnect\Components\Header;
 
+
+Header::render('tomconnect');
+
+Footer::render();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <title>TomConnect</title>
-</head>
-<body>
-    <div class="organization-gallery">
-    <?php 
-    foreach(OrganizationModel::fetch_all() as $organization) {
-        (new OrganizationCard())->render($organization['org_id'], $organization['cover_img_url'], $organization['name']);
-    }
-    ?>
-    </div>
-</body>
-</html>

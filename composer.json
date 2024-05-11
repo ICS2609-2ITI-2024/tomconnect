@@ -3,7 +3,7 @@
     "autoload": {
         "psr-4": {
             "Tomconnect\\": "src/",
-            "Components\\": "components/"
+            "Tomconnect\\Components\\": "components/"
         }
     },
     "authors": [

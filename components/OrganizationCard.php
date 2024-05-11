@@ -1,6 +1,6 @@
 <?php
 
-namespace Components;
+namespace Tomconnect\Components;
 
 class OrganizationCard
 {
