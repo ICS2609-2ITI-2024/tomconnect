@@ -25,20 +25,18 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
         </div>
 
         <div class="org-grid-container">
-        <?php
+            <?php
 
-        use Tomconnect\Components\OrganizationCard;
-        use Tomconnect\Models\OrganizationModel;
+            use Tomconnect\Components\OrganizationCard;
+            use Tomconnect\Models\OrganizationModel;
 
-        foreach (OrganizationModel::fetch_all() as $org) {
-            OrganizationCard::render($org['org_id'], './img/sample.jpg', $org['name']);
-        }
-
-        ?>
+            foreach (OrganizationModel::fetch_all() as $org) {
+                OrganizationCard::render($org['org_id'], './img/sample.jpg', $org['name']);
+            }
+            ?>
+        </div>
 
     </div>
-    </div>
-
 </body>
 
 </html>
