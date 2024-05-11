@@ -17,12 +17,10 @@ Specific styles for the header section if applicable
 }
 
 .logo{
-    margin-top: 14px !important;
     margin-right: -20px !important;
-    margin-bottom: -4px !important;
+    margin-top: -5px !important;
     margin-left: 0px !important;
-    width: 120%;
-    overflow: hidden;
+    width: 60%;
 }
 
 .col-3 {
@@ -45,9 +43,8 @@ Specific styles for the header section if applicable
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    height: 30px;
-    margin-left: 50px;
-    margin-right: -250px;
+    height: 35px;
+    margin-right: -290px;
     
 }
 
@@ -91,10 +88,12 @@ nav a {
     line-height: normal;
     text-decoration: none;
     margin-right: 50px;
+    text-align: center;
+
 }
 
 .nav-list li {
-    margin-left: 10px; /* Adjust spacing between items */
+    margin-top: 6px;
 }
 
 .nav-list li:first-child {
