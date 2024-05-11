@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
+use Tomconnect\Components\CreatePostComponent;
 use Tomconnect\Components\PostComponent;
 use Tomconnect\Models\PostModel;
 use Tomconnect\Models\OrganizationModel;
@@ -23,6 +24,7 @@ NavbarComponent::render();
     </div>
     <main class="main">
         <?php
+        CreatePostComponent::render();
         foreach (PostModel::fetch_all() as $post) {
             $author = OrganizationModel::fetch($post['author_id']);
             PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);

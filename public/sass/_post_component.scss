@@ -59,6 +59,9 @@
         padding-right: 1rem;
         padding-left: 1rem;
         padding-bottom: .5rem;
+        .content {
+            width: inherit;
+        }
     }
     
     .tag {

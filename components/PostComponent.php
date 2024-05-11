@@ -20,9 +20,9 @@ class PostComponent
                     </div>
                 </div>
                 <div class="content-container">
-                    <p class="content">
+                    <pre class="content">
                         <?= $content ?>
-                    </p>
+                    </pre>
                     <!-- <div class="container container-fluid">
                         <div class="tag">
                             <span>University-Wide</span>
