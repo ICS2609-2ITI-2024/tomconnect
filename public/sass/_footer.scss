@@ -1,88 +1,16 @@
 /*
 Specific styles for the footer section if applicable.
 */
-.logo img {
-    display: block;
-    height: auto;
-}
-
-.col-3 {
-    height: 10px !important;
-}
-
-.col-4 {
-    height: 10px !important;
-
-}
-
-.col-5 {
-    width: 500px !important;
-    height: 10px !important;
-}
-
-.search-bar {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    height: 100px;
-}
-
-.search-bar input {
-    padding: 0 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-p {
-    margin: 0;
-    color: #FFF;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-nav a {
-    color: #FFF;
-    font-family: "Montserrat", sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-decoration: none;
-    margin-right: 20px; /* Adjust the spacing between links */
-}
-
-nav a:last-child {
-    margin-right: 0; /* Remove margin-right for the last link */
-}
-
-.col-nav {
-    width: 20px !important;
-}
-
-li {
-    width: 20px !important;
-}
-
 footer {
-    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     color: white;
     text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
     margin-top: auto; /* Push the footer to the bottom */
+    width: inherit;
+    padding: 1rem;
 }
 
 

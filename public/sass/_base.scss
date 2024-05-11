@@ -1,3 +1,46 @@
 /* 
     Define base styles for HTML elements (e.g., body, headings, paragraphs).
 */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    font-family: $montserrat;
+
+    .back-img {
+        position: fixed;
+        top: 0;
+        z-index: -500;
+        width: 100%;
+    }
+}
+
+.main-feed {
+    display: flex;
+    justify-content: center;
+    padding: 0 4rem;
+}
+
+.left {
+    // background-color: red;
+    flex: 1;
+}
+
+.main {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 3rem;
+    border-radius: .25rem;
+    background-color: #F0F2F5;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.right {
+    // background-color: blue;
+    flex: 1;
+}

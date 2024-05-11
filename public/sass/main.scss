@@ -1,10 +1,11 @@
 @use './normalize';
 
-@use './variables';
 @import './variables';
 @import './typography';
 @import './buttons';
 @import './event_card';
+
+@import './base';
+
 @import './post_component';
-@import './cards';
-@import './admin_page';
+

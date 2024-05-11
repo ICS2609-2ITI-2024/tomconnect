@@ -19,9 +19,6 @@ Set typography-related styles such as font sizes, line heights, and font familie
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url(https://fonts.googleapis.com/css?family=Inter);
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url(https://fonts.googleapis.com/css?family=Inter);
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -76,9 +73,6 @@ table {
   border-spacing: 0;
 }
 
-/*
-Define variables for colors, fonts, spacing, and other commonly used values.
-*/
 .org-reg-button {
   /* Background and Text color */
   background-color: #fcae65;
@@ -151,14 +145,57 @@ Define variables for colors, fonts, spacing, and other commonly used values.
   background-color: #b8d2ec;
 }
 
+/* 
+    Define base styles for HTML elements (e.g., body, headings, paragraphs).
+*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+body .back-img {
+  position: fixed;
+  top: 0;
+  z-index: -500;
+  width: 100%;
+}
+
+.main-feed {
+  display: flex;
+  justify-content: center;
+  padding: 0 4rem;
+}
+
+.left {
+  flex: 1;
+}
+
+.main {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 3rem;
+  border-radius: 0.25rem;
+  background-color: #F0F2F5;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.right {
+  flex: 1;
+}
+
 .post-card {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   line-height: 1.25rem;
   width: 100%;
-  max-width: 33rem;
+  max-width: 45rem;
   border-radius: 0.75rem;
-  border: solid 1px gray;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  background-color: white;
   overflow: hidden;
   display: flex;
 }
@@ -170,6 +207,9 @@ Define variables for colors, fonts, spacing, and other commonly used values.
   text-decoration: none;
   color: black;
   font-weight: 600;
+}
+.post-card .author-name-and-date-published a:hover {
+  text-decoration: underline;
 }
 .post-card .author-name-and-date-published small {
   font-size: 0.75rem;
@@ -195,7 +235,12 @@ Define variables for colors, fonts, spacing, and other commonly used values.
   height: auto;
 }
 .post-card .content-container {
-  padding: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+.post-card .content-container .content {
+  width: inherit;
 }
 .post-card .tag {
   display: flex;
@@ -206,94 +251,4 @@ Define variables for colors, fonts, spacing, and other commonly used values.
   background-color: orange;
   padding: 0.5rem;
   border-radius: 0.5rem;
-}
-
-/*
-Set typography-related styles such as font sizes, line heights, and font families.
-*/
-.card {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffbd81;
-}
-.card:hover {
-  transform: scale(1.03);
-}
-.card:hover span {
-  display: none;
-}
-.card img {
-  width: 100%;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 30%;
-}
-.card img:hover {
-  transition: transform 0.3s ease-in-out;
-  transform: scale(1.1);
-  opacity: 100;
-  transition: opacity 0.7s, ease-in-out;
-}
-.card span {
-  position: absolute;
-  margin: auto;
-  font-family: "Montserrat";
-  font-weight: 700;
-  color: white;
-}
-
-.org-content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 35rem;
-  height: 15rem;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.org-text-heading {
-  color: #FFA858;
-  font-family: Inter;
-  font-size: 2.5rem;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.org-text-content {
-  color: #000;
-  text-align: center;
-  font-family: Montserrat;
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: 400;
-  padding-top: 0.3rem;
-  max-width: 85%;
-}
-
-.org-text-end {
-  color: #000;
-  font-family: Montserrat;
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: 700;
-  padding-top: 1.2rem;
-}
-
-.org-grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  width: 35rem;
-  height: 50rem;
-  max-width: 100%;
-  padding-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
 }/*# sourceMappingURL=main.css.map */

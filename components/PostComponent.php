@@ -11,28 +11,29 @@ class PostComponent
         <article class="post-card">
             <div class="card cardCustom">
                 <div class="author-container">
-                    <!-- IcBaselineAccountCircle.png -->
-                    <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'img/IcBaselineAccountCircle.png' ?> alt="" class="profile-image">
+                    <a href="">
+                        <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'img/IcBaselineAccountCircle.png' ?> alt="" class="profile-image">
+                    </a>
                     <div class="author-name-and-date-published">
                         <h4 class="mb-0 nameStyle"><a href=""><?= ucwords($author_name) ?></a></h4>
                         <small><?= self::timeAgo(strtotime($date_published)) ?></small>
                     </div>
                 </div>
-                <?php if ($media_url != null): ?>
-                <div class="mainImageContainer">
-                    <img src=<?= $media_url ?> class="card-img-top img-fluid mainImage" alt="...">
-                </div>
-                <?php endif ?>
                 <div class="content-container">
-                    <p class="content">
+                    <pre class="content">
                         <?= $content ?>
-                    </p>
+                    </pre>
                     <!-- <div class="container container-fluid">
                         <div class="tag">
                             <span>University-Wide</span>
                         </div>
                     </div> -->
                 </div>
+                <?php if ($media_url != null): ?>
+                <div class="mainImageContainer">
+                    <img src=<?= $media_url ?> class="card-img-top img-fluid mainImage" alt="...">
+                </div>
+                <?php endif ?>
             </div>
         </article>
 <?php
