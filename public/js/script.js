@@ -1,3 +1,10 @@
+
+const paragraphs = document.querySelectorAll('p');
+
+paragraphs.forEach((paragraph) => {
+    paragraph.innerHTML = linkify(paragraph.innerHTML);
+});
+
 function linkify(inputText) {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 

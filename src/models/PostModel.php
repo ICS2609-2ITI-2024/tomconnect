@@ -29,7 +29,7 @@ class PostModel extends Model
     /**
      * SQL statement for fetching all post records.
      */
-    const FETCH_ALL_SQL_STATEMENT = "SELECT * FROM posts WHERE is_deleted = 0;";
+    const FETCH_ALL_SQL_STATEMENT = "SELECT * FROM posts WHERE is_deleted = 0 ORDER BY created_at DESC;";
 
     /**
      * SQL statement for fetching a specific post record by ID.

@@ -1,34 +1,14 @@
-
-@import 'animations';
-@import 'base';
-@import 'buttons';
-@import 'custom';
-@import 'debug';
-@import 'footer';
-@import 'forms';
-@import 'grid';
-@import 'header';
-@import 'layout';
-@import 'mixins';
-@import 'modal';
-@import 'normalize';
-@import 'placeholder';
-@import 'print';
-@import 'responsive';
-@import 'tooltip';
-@import 'typography';
-@import 'utilities';
-@import 'variable_theme';
-@import 'variables';
-@import 'vendor_prefixes';
-@import 'cards';
-
 @use './normalize';
 
-@use './variables';
 @import './variables';
 @import './typography';
 @import './buttons';
 @import './event_card';
+
+@import './base';
+
 @import './post_component';
+@import './footer';
+@import './navbar';
+@import './forms';
 
