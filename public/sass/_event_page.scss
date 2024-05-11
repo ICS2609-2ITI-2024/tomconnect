@@ -1,13 +1,34 @@
 
  body {
-    background-color: yellow;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    
+
 }
 
-.card-main-style {   
-            
+.card-main-title {
+    font-family: "Inter";
+    font-size: 45px;
 }
+
+.main-card-style {
+    margin: auto;
+    width: 50%;
+    padding: 10px 50px 10px 0px;
+    max-width: fit-content;
+}
+
+.container-date {
+    margin-left: 15px;
+}
+
+.container-event {
+    margin-left: 4px;
+}
+
+.card-style {
+    padding: 10px 150px 50px 5px;
+}
+
+
  
