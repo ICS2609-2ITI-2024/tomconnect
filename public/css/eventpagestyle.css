@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Inter);
+
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+td {
+    padding: 10px 10px 10px 10px;
+}
+
+.card-title {
+    font-family: "Inter";
+    font-size: 30px;
+}
+
+.title-style {
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+.main-card-style {
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    max-width: fit-content;
+}
+
+.container-date {
+    margin-left: 15px;
+}
+
+.container-event {
+    margin-top: 10px;
+}
+
+.card-style {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 240px;
+    height: 150px;
+}
