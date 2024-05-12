@@ -3,9 +3,6 @@
 
 <?php
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
-
-use Tomconnect\Components\EventCard;
-use Tomconnect\Components\EventComponent;
 ?>
 
 <head>
