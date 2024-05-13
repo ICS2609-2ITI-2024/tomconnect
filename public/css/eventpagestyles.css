@@ -43,3 +43,22 @@ td {
     width: 240px;
     height: 150px;
 }
+
+.pagination a {
+    color: #8f8f8f;
+    margin: auto;
+    font-family: "Inter";
+    font-weight: bold;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: #FEE08F;
+    color: white;
+  }
+  
+
+  .pagination a:hover:not(.active) {background-color: #ddd;}
