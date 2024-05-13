@@ -1,13 +1,14 @@
-@use './normalize';
+@use "./normalize";
 
-@import './variables';
-@import './typography';
-@import './buttons';
-@import './event_card';
+@import "./variables";
+@import "./typography";
+@import "./buttons";
+@import "./event_card";
 
-@import './base';
+@import "./base";
 
 @import './post_component';
-@import './organization';
-@import './cards';
-
+@import './footer';
+@import './navbar';
+@import './forms';
+@import './orglogin';

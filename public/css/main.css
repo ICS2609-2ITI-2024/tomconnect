@@ -1,44 +1,90 @@
-/*
-Define variables for colors, fonts, spacing, and other commonly used values.
-*/
-/*
-Set typography-related styles such as font sizes, line heights, and font families.
-*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url(https://fonts.googleapis.com/css?family=Inter);
-/* 
-    Styles for various button types and states.
-*/
-/*
-Define variables for colors, fonts, spacing, and other commonly used values.
-*/
-/*
-Set typography-related styles such as font sizes, line heights, and font families.
-*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url(https://fonts.googleapis.com/css?family=Inter);
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url(https://fonts.googleapis.com/css?family=Inter);
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css?family=Inter";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css?family=Inter";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -46,41 +92,44 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
-
 body {
   line-height: 1;
 }
-
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 .org-reg-button {
-  /* Background and Text color */
   background-color: #fcae65;
-  color: #F9FAFB;
-  /* Text alignment and font */
+  color: #f9fafb;
   text-align: center;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
@@ -97,9 +146,8 @@ table {
   margin-right: 0.25rem;
 }
 .org-reg-button:hover {
-  background-color: #FFBD81;
+  background-color: #ffbd81;
 }
-
 .event-card {
   font-family: "Inter", sans-serif;
   font-size: 0.75rem;
@@ -121,18 +169,18 @@ table {
   font-weight: 500;
 }
 .event-card .event-container {
-  background-color: #D1D5DB;
+  background-color: #d1d5db;
   padding: 0.75rem 1.25rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 .event-card .event-title {
-  color: #FFA858;
+  color: #ffa858;
   font-weight: bold;
   font-size: 1.5rem;
 }
 .event-card .event-reg-button {
-  background-color: #A7C7E7;
+  background-color: #a7c7e7;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   display: flex;
@@ -140,17 +188,13 @@ table {
   align-items: center;
   margin-top: 0.5rem;
   text-decoration: none;
-  color: #F9FAFB;
+  color: #f9fafb;
   font-weight: bold;
   font-size: 1rem;
 }
 .event-card .event-reg-button:hover {
   background-color: #b8d2ec;
 }
-
-/* 
-    Define base styles for HTML elements (e.g., body, headings, paragraphs).
-*/
 body {
   display: flex;
   flex-direction: column;
@@ -163,42 +207,41 @@ body .back-img {
   z-index: -500;
   width: 100%;
 }
-
 .main-feed {
   display: flex;
   justify-content: center;
   padding: 0 4rem;
 }
-
 .left {
   flex: 1;
 }
-
 .main {
   flex: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 5rem;
   gap: 1.25rem;
   padding: 3rem;
   border-radius: 0.25rem;
-  background-color: #F0F2F5;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  background-color: #f0f2f5;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
-
 .right {
   flex: 1;
 }
-
 .post-card {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   line-height: 1.25rem;
   width: 100%;
   max-width: 45rem;
+  max-width: 45rem;
   border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   overflow: hidden;
   display: flex;
 }
@@ -206,9 +249,25 @@ body .back-img {
   display: flex;
   flex-direction: column;
 }
+.post-card .card {
+  display: flex;
+  flex-direction: column;
+}
 .post-card .author-name-and-date-published a {
   text-decoration: none;
-  color: black;
+  color: #000;
+  font-weight: 600;
+}
+.post-card .author-name-and-date-published a:hover {
+  text-decoration: underline;
+}
+.post-card .author-name-and-date-published small {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.post-card .author-name-and-date-published a {
+  text-decoration: none;
+  color: #000;
   font-weight: 600;
 }
 .post-card .author-name-and-date-published a:hover {
@@ -225,10 +284,29 @@ body .back-img {
   font-weight: 500;
   padding: 0.75rem 1rem;
 }
+.post-card .author-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+}
 .post-card .profile-image {
   border-radius: 50%;
   overflow: hidden;
   width: 2rem;
+}
+.post-card .profile-image {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 2rem;
+}
+.post-card .mainImageContainer {
+  overflow: hidden;
+}
+.post-card .mainImageContainer img {
+  width: 100%;
+  height: auto;
 }
 .post-card .mainImageContainer {
   overflow: hidden;
@@ -250,98 +328,184 @@ body .back-img {
   margin-top: 0.5rem;
 }
 .post-card .tag span {
-  color: white;
+  color: #fff;
   background-color: orange;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
-
-.org-content-container {
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: inherit;
+  overflow: auto;
+}
+.post-form {
+  width: 100%;
+  border-radius: 1rem;
+  max-width: 45rem;
+}
+.post-form .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 35rem;
-  height: 15rem;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
+  margin: 0.5rem 2rem;
 }
-
-.org-text-heading {
-  color: #FFA858;
-  font-family: Inter;
-  font-size: 2.5rem;
-  font-style: normal;
-  font-weight: 700;
+.post-form .content textarea {
+  font-family: inherit;
+  resize: none;
+  width: 100%;
+  overflow: auto;
+  overflow-y: auto;
+  min-height: 100px;
+  max-height: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
-
-.org-text-content {
-  color: #000;
-  text-align: center;
-  font-family: Montserrat;
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: 400;
-  padding-top: 0.3rem;
-  max-width: 85%;
-}
-
-.org-text-end {
-  color: #000;
-  font-family: Montserrat;
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: 700;
-  padding-top: 1.2rem;
-}
-
-.org-grid-container {
+.post-form .content .buttons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  width: 35rem;
-  height: 50rem;
-  max-width: 100%;
-  padding-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(2, 1fr);
 }
-
-/*
-Set typography-related styles such as font sizes, line heights, and font families.
-*/
-.card {
+.content-container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+.content-container .content {
+  width: inherit;
+}
+.tag {
+  display: flex;
+  margin-top: 0.5rem;
+}
+.tag span {
+  color: #fff;
+  background-color: orange;
+  padding: 0.5rem;
   border-radius: 0.5rem;
-  overflow: hidden;
+}
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: inherit;
+  overflow: auto;
+}
+.post-form {
+  width: 100%;
+  border-radius: 1rem;
+  max-width: 45rem;
+}
+.post-form .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0.5rem 2rem;
+}
+.post-form .content textarea {
+  font-family: inherit;
+  resize: none;
+  width: 100%;
+  overflow: auto;
+  overflow-y: auto;
+  min-height: 100px;
+  max-height: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.post-form .content .buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffbd81;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin-top: auto;
+  width: inherit;
+  padding: 1rem;
+  font-size: 0.5rem;
 }
-.card:hover {
-  transform: scale(1.03);
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 2rem;
+  background-color: #000;
+  color: #fff;
+  opacity: 90%;
+  border-radius: 0.5rem;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 1rem;
 }
-.card:hover span {
-  display: none;
+.navbar .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
-.card img {
+.navbar .logo img {
   width: 100%;
+  max-width: 2rem;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 30%;
 }
-.card img:hover {
-  transition: transform 0.3s ease-in-out;
-  transform: scale(1.1);
-  opacity: 100;
-  transition: opacity 0.7s, ease-in-out;
+.navbar .logo h1 {
+  color: #f9fafb;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
 }
-.card span {
-  position: absolute;
-  margin: auto;
-  font-family: "Montserrat";
-  font-weight: 700;
-  color: white;
-}/*# sourceMappingURL=main.css.map */
+.navbar .nav-items {
+  display: flex;
+}
+.navbar .nav-items .nav-item {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.navbar .nav-items .nav-item:hover {
+  background-color: #1f2937;
+}
+.navbar .nav-items .nav-item a {
+  color: #d1d5db;
+}
+.navbar .nav-items a {
+  text-decoration: none;
+  color: #f9fafb;
+}
+.navbar .nav-items .search {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+.search-form {
+  background-color: #e5e7eb;
+  border-radius: 1rem;
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
+  color: #374151;
+}
+.search-form svg {
+  width: 10%;
+}
+.search-form input {
+  color: #111827;
+  outline: none;
+  background-color: inherit;
+  border: none;
+  flex: 1;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+}
+.search-form input::placeholder {
+  color: #374151;
+}
+.search-form input::-ms-input-placeholder {
+  color: #374151;
+}

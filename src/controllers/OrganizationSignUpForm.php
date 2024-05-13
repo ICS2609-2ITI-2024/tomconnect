@@ -545,7 +545,7 @@ class OrganizationSignUpForm extends Controller
      * @return bool True if the email address format is valid, and false otherwise.
      * @access private
      */
-    private function is_email_format_valid() 
+    private function is_email_format_valid()
     {
         return (filter_var($this->email, FILTER_VALIDATE_EMAIL));
     }

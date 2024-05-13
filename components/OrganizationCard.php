@@ -4,7 +4,7 @@ namespace Tomconnect\Components;
 
 class OrganizationCard
 {
-    public static function render($org_id,$image_url, $organization_name)
+    public function render($org_id,$image_url, $organization_name)
     {
 ?>
         <div class="card">
