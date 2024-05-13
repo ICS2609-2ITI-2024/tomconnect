@@ -12,7 +12,6 @@ use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Components\Footer;
 use Tomconnect\Components\Header;
 use Tomconnect\Components\NavbarComponent;
-use Tomconnect\Components\EventCard;
 
 
 Header::render('tomconnect');

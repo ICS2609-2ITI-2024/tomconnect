@@ -3,20 +3,17 @@
 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] !== "POST")
-{
+if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     header("Location: " . "../public/404.php");
     die();
 }
 
-if (!isset($_SESSION['is_logged_in']))
-{
+if (!isset($_SESSION['is_logged_in'])) {
     header("Location: " . "../public/404.php");
     die();
 }
 
-if (!isset($_SESSION['logged_user']))
-{
+if (!isset($_SESSION['logged_user'])) {
     header("Location: " . "../public/404.php");
     die();
 }
@@ -34,5 +31,4 @@ $post_controller = new Post();
 $post_controller->post(OrganizationModel::get_id($logged_user));
 
 header("Location: " . $_SERVER['HTTP_REFERER']);
-die()
-?>
+die();

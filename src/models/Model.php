@@ -6,7 +6,7 @@ namespace Tomconnect\Models;
 
 use Tomconnect\Models\Database;
 
-abstract class Model extends Database 
+abstract class Model extends Database
 {
     protected static function sanitize_input($data): string
     {
@@ -16,10 +16,11 @@ abstract class Model extends Database
         return $data;
     }
 
-    protected static function map_array_with_exec_prefix(array $data) {
+    protected static function map_array_with_exec_prefix(array $data)
+    {
         $transformed_array = [];
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $transformed_array[self::prefixKey($key)] = $value;
         }
 
@@ -40,5 +41,4 @@ abstract class Model extends Database
     abstract static public function update($identifier, array $data);
 
     abstract static public function delete($identifier);
-
 }

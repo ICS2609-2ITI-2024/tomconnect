@@ -7,7 +7,7 @@ class ImageUpload
     // const FILE_PATH = ;
 
     const ALLOWED_TYPE = ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'tif'];
-    
+
     const FILE_PATH = "media/";
     private $file_name;
 
@@ -21,7 +21,7 @@ class ImageUpload
 
     private $file_extension;
 
-    private $file_actual_extension; 
+    private $file_actual_extension;
     private $file_destination;
 
     private $file_path;

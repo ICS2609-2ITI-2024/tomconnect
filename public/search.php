@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] !== "GET")
-{
+if ($_SERVER['REQUEST_METHOD'] !== "GET") {
     header("Location: " . "../public/404.php");
     die();
 }
