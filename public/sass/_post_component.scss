@@ -1,16 +1,16 @@
 .post-card {
-    font-family: $inter;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    width: 100%;
-    max-width: 45rem;
-    max-width: 45rem;
-    border-radius: .75rem;
-    // border: solid 1px gray;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    background-color: white;
-    overflow: hidden;
-    display: flex;
+  font-family: $inter;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 100%;
+  max-width: 45rem;
+  max-width: 45rem;
+  border-radius: 0.75rem;
+  // border: solid 1px gray;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background-color: white;
+  overflow: hidden;
+  display: flex;
 
   .card {
     display: flex;
@@ -130,7 +130,7 @@ pre {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: .5rem 2rem;
+    margin: 0.5rem 2rem;
 
     textarea {
       font-family: inherit;
@@ -151,24 +151,23 @@ pre {
   }
 }
 
-  .content-container {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 0.5rem;
-    .content {
-      width: inherit;
-    }
+.content-container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  .content {
+    width: inherit;
   }
+}
 
-  .tag {
-    display: flex;
-    margin-top: 0.5rem;
-    span {
-      color: white;
-      background-color: orange;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-    }
+.tag {
+  display: flex;
+  margin-top: 0.5rem;
+  span {
+    color: white;
+    background-color: orange;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
 }
 
@@ -188,7 +187,7 @@ pre {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: .5rem 2rem;
+    margin: 0.5rem 2rem;
 
     textarea {
       font-family: inherit;
