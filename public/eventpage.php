@@ -3,6 +3,15 @@
 
 <?php
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
+
+/*use Tomconnect\Components\Footer;
+use Tomconnect\Components\Header;
+use Tomconnect\Components\NavbarComponent;
+use Tomconnect\Components\EventCard;
+
+
+Header::render('tomconnect');
+NavbarComponent::render();*/
 ?>
 
 <head>
@@ -11,7 +20,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- CS -->
-    <link rel="stylesheet" href="./css/eventpagestyles.css">
+    <link rel="stylesheet" href="./css/main.css">
     <title>Events</title>
 </head>
 
