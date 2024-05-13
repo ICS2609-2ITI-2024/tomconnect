@@ -22,7 +22,6 @@ NavbarComponent::render();
 <img src="./assets/testbg 2.svg" alt="" class="back-img">
 <div class="main-feed">
     <div class="left">
-        Left
     </div>
     <main class="main">
         <?php
@@ -34,7 +33,6 @@ NavbarComponent::render();
         ?>
     </main>
     <div class="right">
-        Right
     </div>
 </div>
 <?php
