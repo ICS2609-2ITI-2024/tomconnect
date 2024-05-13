@@ -11,10 +11,3 @@
 @import "./footer";
 @import "./navbar";
 @import "./forms";
-
-pre {
-    white-space: pre-wrap; /* Allow wrapping of long lines */
-    word-wrap: break-word; /* Break long words to prevent overflow */
-    max-width: inherit; /* Define maximum width */
-    overflow: auto; /* Enable horizontal scrolling if needed */
-}

@@ -31,7 +31,6 @@ NavbarComponent::render();
             $author = OrganizationModel::fetch($post['author_id']);
             PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
         }
-
         ?>
     </main>
     <div class="right">
