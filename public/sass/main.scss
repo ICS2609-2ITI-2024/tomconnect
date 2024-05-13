@@ -1,14 +1,20 @@
-@use './normalize';
+@use "./normalize";
 
-@import './variables';
-@import './typography';
-@import './buttons';
-@import './event_card';
+@import "./variables";
+@import "./typography";
+@import "./buttons";
+@import "./event_card";
 
-@import './base';
+@import "./base";
 
-@import './post_component';
-@import './footer';
-@import './navbar';
-@import './forms';
+@import "./post_component";
+@import "./footer";
+@import "./navbar";
+@import "./forms";
 
+pre {
+    white-space: pre-wrap; /* Allow wrapping of long lines */
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    max-width: inherit; /* Define maximum width */
+    overflow: auto; /* Enable horizontal scrolling if needed */
+}
