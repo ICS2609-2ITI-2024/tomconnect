@@ -85,7 +85,7 @@ class PostModel extends Model
 
     public static function search_from_column(string $column, $query)
     {
-        $sql = "SELECT * FROM posts WHERE is_deleted = 0 AND " . $column . " = :q;";
+        $sql = "SELECT * FROM posts WHERE is_deleted = 0 AND " . $column . " = :q ORDER BY created_at DESC;";
         $stmt = parent::connect()->prepare($sql);
         $stmt->execute([':q' => $query]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
