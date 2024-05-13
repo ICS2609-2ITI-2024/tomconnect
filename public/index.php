@@ -5,26 +5,37 @@ declare(strict_types=1);
 
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
+use Tomconnect\Components\CreatePostComponent;
 use Tomconnect\Components\PostComponent;
-use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Models\PostModel;
+use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Components\Footer;
+use Tomconnect\Components\Header;
+use Tomconnect\Components\NavbarComponent;
+use Tomconnect\Components\EventCard;
 
-session_start();
+
+Header::render('tomconnect');
+NavbarComponent::render();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <title>TomConnect</title>
-</head>
-<body>
-    <div class="">
-        <?php foreach(PostModel::fetch_all() as $post): ?>
-            <?php PostComponent::render(OrganizationModel::fetch($post['author_id'])['name'], OrganizationModel::fetch($post['author_id'])['logo_url'], $post['content'], $post['media_url'], $post['created_at']) ?>
-        <?php endforeach ?>
+<img src="./assets/testbg 2.svg" alt="" class="back-img">
+<div class="main-feed">
+    <div class="left">
     </div>
-</body>
-</html>
+    <main class="main">
+        <?php
+        CreatePostComponent::render();
+        foreach (PostModel::fetch_all() as $post) {
+            $author = OrganizationModel::fetch($post['author_id']);
+            PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
+        }
+        ?>
+    </main>
+    <div class="right">
+    </div>
+</div>
+<?php
+
+Footer::render();
+?>

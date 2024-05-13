@@ -13,4 +13,6 @@ use Tomconnect\Controllers\search;
 
 $search = new Search();
 
-echo json_encode($search->search());
+$result = $search->search();
+
+echo json_encode($result);

@@ -1,3 +1,17 @@
 /*
 Specific styles for the footer section if applicable.
 */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+    width: inherit;
+    padding: 1rem;
+    font-size: .5rem;
+}
+
+

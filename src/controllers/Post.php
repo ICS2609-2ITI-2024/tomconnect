@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tomconnect\Controllers;
@@ -6,7 +7,7 @@ namespace Tomconnect\Controllers;
 use Tomconnect\Utility\ImageUpload;
 use Tomconnect\Models\PostModel;
 
-class Post
+class Post extends Controller
 {
 
     private $content;
@@ -21,7 +22,7 @@ class Post
     public function post($author_id)
     {
         $this->author_id = $author_id;
-        $this->content = $_POST['content'];
+        $this->content = self::sanitize_input($_POST['content']);
 
         if ($this->is_content_empty()) {
             return false;
@@ -42,8 +43,10 @@ class Post
     private function store_post_to_db()
     {
         PostModel::create(['author_id' => $this->author_id, 'content' => $this->content]);
-        $post_id = PostModel::search_from_column('content', $this->content)[0]['post_id'];
-        PostModel::update($post_id, ['media_url' => $this->image_url]);
+        if ($this->image_url != -1) {
+            $post_id = PostModel::search_from_column('content', $this->content)[0]['post_id'];
+            PostModel::update($post_id, ['media_url' => $this->image_url]);
+        }
     }
 
     private function is_content_empty()
@@ -55,5 +58,4 @@ class Post
     {
         return (!isset($_FILES['upload']));
     }
-
 }

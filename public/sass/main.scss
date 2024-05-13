@@ -1,10 +1,15 @@
+@use "./normalize";
 
-@use './normalize';
+@import "./variables";
+@import "./typography";
+@import "./buttons";
+@import "./event_card";
 
-@use './variables';
-@import './variables';
-@import './typography';
-@import './buttons';
-@import './event_card';
-@import './post_component';
+@import "./base";
+
+@import "./post_component";
+@import "./footer";
+@import "./navbar";
+@import "./forms";
+
 @import './event_page';

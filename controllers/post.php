@@ -33,8 +33,6 @@ $post_controller = new Post();
 
 $post_controller->post(OrganizationModel::get_id($logged_user));
 
-$post = PostModel::search_from_column('content', $_POST['content'])[0];
-
 header("Location: " . $_SERVER['HTTP_REFERER']);
 die()
 ?>
