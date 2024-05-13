@@ -12,15 +12,16 @@ use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Components\Footer;
 use Tomconnect\Components\Header;
 use Tomconnect\Components\NavbarComponent;
+use Tomconnect\Components\EventCard;
 
 
 Header::render('tomconnect');
 NavbarComponent::render();
+
 ?>
-<img src="./img/testbg 2.svg" alt="" class="back-img">
+<img src="./assets/testbg 2.svg" alt="" class="back-img">
 <div class="main-feed">
     <div class="left">
-        Left
     </div>
     <main class="main">
         <?php
@@ -32,9 +33,9 @@ NavbarComponent::render();
         ?>
     </main>
     <div class="right">
-        Right
     </div>
 </div>
 <?php
+
 Footer::render();
 ?>
