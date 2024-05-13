@@ -12,12 +12,14 @@ use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Components\Footer;
 use Tomconnect\Components\Header;
 use Tomconnect\Components\NavbarComponent;
+use Tomconnect\Components\EventCard;
 
 
 Header::render('tomconnect');
 NavbarComponent::render();
+
 ?>
-<img src="./img/testbg 2.svg" alt="" class="back-img">
+<img src="./assets/testbg 2.svg" alt="" class="back-img">
 <div class="main-feed">
     <div class="left">
         Left
@@ -29,6 +31,7 @@ NavbarComponent::render();
             $author = OrganizationModel::fetch($post['author_id']);
             PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
         }
+
         ?>
     </main>
     <div class="right">
@@ -36,5 +39,6 @@ NavbarComponent::render();
     </div>
 </div>
 <?php
+
 Footer::render();
 ?>

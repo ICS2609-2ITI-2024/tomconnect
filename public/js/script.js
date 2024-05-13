@@ -1,5 +1,7 @@
 
-const paragraphs = document.querySelectorAll('p');
+const paragraphs = document.querySelectorAll('.linkify');
+
+console.log(paragraphs);
 
 paragraphs.forEach((paragraph) => {
     paragraph.innerHTML = linkify(paragraph.innerHTML);
