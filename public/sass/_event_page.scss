@@ -1,19 +1,26 @@
-
- body {
+body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.card-main-title {
+td {
+    padding: 10px 10px 10px 10px;
+}
+
+.card-title {
     font-family: "Inter";
-    font-size: 45px;
+    font-size: 30px;
+}
+
+.title-style {
+    font-family: "Montserrat";
+    font-weight: bold;
 }
 
 .main-card-style {
     margin: auto;
-    width: 50%;
-    padding: 10px 50px 10px 0px;
+    padding: 10px 10px 10px 10px;
     max-width: fit-content;
 }
 
@@ -22,12 +29,32 @@
 }
 
 .container-event {
-    margin-left: 4px;
+    margin-top: 10px;
 }
 
 .card-style {
-    padding: 10px 150px 50px 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 240px;
+    height: 150px;
 }
 
+.pagination a {
+    color: #8f8f8f;
+    margin: auto;
+    font-family: "Inter";
+    font-weight: bold;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: #FEE08F;
+    color: white;
+  }
+  
 
- 
+  .pagination a:hover:not(.active) {background-color: #ddd;}

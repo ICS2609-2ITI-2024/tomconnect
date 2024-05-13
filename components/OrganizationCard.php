@@ -1,10 +1,10 @@
 <?php
 
-namespace Components;
+namespace Tomconnect\Components;
 
 class OrganizationCard
 {
-    public function render($org_id, $image_url, $organization_name)
+    public function render($org_id,$image_url, $organization_name)
     {
 ?>
         <div class="card">
