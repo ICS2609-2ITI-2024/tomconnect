@@ -38,6 +38,7 @@
 
     .nav-items {
         display: flex;
+        align-items: center;
 
         .nav-item {
             padding: 1rem;
@@ -53,12 +54,14 @@
         a {
             text-decoration: none;
             color: $neutral-1;
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         .search {
             display: flex;
             align-items: center;
-            padding: 0 1rem;
+            justify-content: center;
         }
     }
 
