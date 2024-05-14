@@ -12,3 +12,9 @@
 @import './navbar';
 @import './forms';
 @import './orglogin';
+
+.center {
+    display: flex;
+    justify-content: center;
+    width: inherit;
+}
