@@ -14,7 +14,7 @@ class NavbarComponent
             </div>
             <div class="nav-items">
                 <div class="nav-item">
-                    <a href="">
+                    <a href="index.php">
                         Feed
                     </a>
                 </div>
