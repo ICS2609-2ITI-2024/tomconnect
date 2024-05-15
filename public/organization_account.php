@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 session_start();
+
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 ?>
 
@@ -15,16 +16,14 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     <title>TomConnect</title>
     <link rel="shortcut icon" type="image/x-icon" href="../public/assets/logo.ico">
 
-    <!-- <link rel="stylesheet" href="../public/css/main.css"> -->
-    <link rel="stylesheet" href="../components/header_footer.css">
-    <link rel="stylesheet" href="org_acc.css">
+    <link rel="stylesheet" href="./css/main.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <?php
 
+    <?php
     use Tomconnect\Components\CreatePostComponent;
     use Tomconnect\Components\PostComponent;
     use Tomconnect\Components\Footer;
@@ -41,7 +40,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     Header::render('tomconnect');
     NavbarComponent::render();
 
-    /** 
+/** 
      * Container for Organization's Cover Photo
      * retrieve cover_img_url from organizations database
      */
@@ -82,7 +81,6 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     {
     }
 
-
     $org = OrganizationModel::fetch(3);
     echo $org['name'];
     ?>
@@ -94,7 +92,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
         <div class="row">
             <div class="col-12">
                 <?php
-                CoverPhoto::render($org['cover_img_url'], $org['org_id']);
+                    CoverPhoto::render($org['cover_img_url'], $org['org_id']);
                 ?>
             </div>
         </div>
@@ -113,7 +111,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
                 <div class="col"> <!--col for icons-->
                     <div class="row icon-info">
                         <img src="./assets/Location.png" alt="Location Icon">
-                        <h3> Location </h3>
+                        <h2> Location </h2>
                         <p>Location</p>
                     </div>
 
@@ -135,7 +133,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
                     <!--Retrieve Org's Contact Email-->
                     <div class="row">
-                        <h5> Location </h5>
+                        <h2> Contact Us </h2>
 
                         <p>Contact Email</p>
                     </div>
@@ -153,25 +151,25 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
             </div>
 
             <div class="col">
-                <?php
-                echo "<h1> About </h1>";
-
-                ?>
-
                 <!-- row of posts // last row-->
-                <div class="row">
-                    <h1> Posts </h1>
-                    <?php
-                    CreatePostComponent::render();
-                    foreach (PostModel::fetch_all() as $post) {
-                        $author = OrganizationModel::fetch($post['author_id']);
-                        PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
-                    }
-                    ?>
+                <div class="row justify-content-center">
+                    <div class="about-container">
+                        <h1> About </h1>
+                    </div>
+
+                    <div class="posts-container">
+                        <h1> Posts </h1>
+                        <?php
+                        CreatePostComponent::render();
+                        foreach (PostModel::fetch_all() as $post) {
+                            $author = OrganizationModel::fetch($post['author_id']);
+                            PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
+                        }
+                        ?>
+                    </div>
                 </div>
-
-
             </div>
+
             <?php
             Footer::render();
             ?>

@@ -1,0 +1,28 @@
+/*
+Specific styles for the organizations' accounts if applicable.
+*/
+
+.icon-info {
+    margin-top: 5rem !important;
+    width: 45px;
+    height: 15px;
+}
+
+.about-container, .posts-container {
+    width: 66.5rem;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    color: #000;
+    font-family: Inter;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 2.5rem;
+}
