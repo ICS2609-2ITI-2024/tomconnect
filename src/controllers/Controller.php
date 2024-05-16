@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Controller class provides utility methods for data sanitization and validation.
  * 
@@ -11,6 +12,7 @@
  * @version version 1
  * @since 2024
  */
+
 declare(strict_types=1);
 
 namespace Tomconnect\Controllers;

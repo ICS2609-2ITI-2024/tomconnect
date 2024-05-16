@@ -5,7 +5,7 @@ Specific styles for the header section if applicable
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-header.headerCustom {
+.headerCustom {
     position: sticky;
     top: 0;
     background-color: black;
@@ -16,15 +16,11 @@ header.headerCustom {
     padding: 50px;
 }
 
-.logo, .gx-0 {
-    margin-top: 14px !important;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+.logo{
     margin-right: -20px !important;
-    margin-bottom: -4px !important;
+    margin-top: -5px !important;
     margin-left: 0px !important;
-    width: 120%;
-    overflow: hidden;
+    width: 50% !important;
 }
 
 .col-3 {
@@ -47,13 +43,20 @@ header.headerCustom {
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    height: 100px;
+    height: 35px;
+    margin-right: -290px;
+    
+}
+
+.search {
+    height: 40px;
+    width: 280px;
 }
 
 .search-bar input {
     padding: 0 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 body {
@@ -64,6 +67,9 @@ body {
 }
 
 p {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+
     margin: 0;
     color: #FFF;
     font-family: "Montserrat", sans-serif;
@@ -81,11 +87,13 @@ nav a {
     font-weight: 700;
     line-height: normal;
     text-decoration: none;
-    margin-right: 100px;
+    margin-right: 50px;
+    text-align: center;
+
 }
 
 .nav-list li {
-    margin-left: 20px; /* Adjust spacing between items */
+    margin-top: 6px;
 }
 
 .nav-list li:first-child {
@@ -102,12 +110,3 @@ nav a:last-child {
 }
 
 
-footer {
-    flex: 0 0 auto;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: auto; /* Push the footer to the bottom */
-}

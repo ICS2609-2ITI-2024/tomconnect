@@ -1,7 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] !== "POST")
-{
+if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     header("Location: " . "../public/404.php");
     die();
 }
@@ -9,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST")
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
 use Tomconnect\Controllers\OrganizationSignUpForm;
+
 session_start();
 
 $sign = new OrganizationSignUpForm();
