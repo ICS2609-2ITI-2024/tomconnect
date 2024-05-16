@@ -22,6 +22,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     NavbarComponent::render();
 
     ?>
+    
     <div class="org-content-container">
         <div class="org-text-heading">
             Your Journey Starts Here

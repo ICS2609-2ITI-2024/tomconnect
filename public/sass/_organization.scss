@@ -8,6 +8,7 @@
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5rem;
 }
 
 .org-text-heading {
@@ -46,10 +47,5 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    width: 35rem;
-    height: 50rem;
-    max-width: 100%;
     padding-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
 }
