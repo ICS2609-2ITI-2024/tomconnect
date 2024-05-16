@@ -1,20 +1,23 @@
 .events-container {
-    margin: auto;
-    width: 16%;
-    padding: 0px 10px 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Adjust the gap between cards as needed */
 }
 
-.card-title {
-    margin: auto;
+.title-card {
     width: 35%;
     padding: 55px 10px 10px 10px;
     font-family: "Inter";
     font-weight: bold;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .date-container {
-    margin: auto;
-    width: 35%;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.event-card {
+    margin-left: 5%;
+    flex: 1 1 calc(50% - 16px); /* Adjust the width calculation and gap as needed */
+    box-sizing: border-box; /* Ensure padding and border are included in the width calculation */
 }
