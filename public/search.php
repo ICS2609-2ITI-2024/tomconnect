@@ -43,6 +43,7 @@ NavbarComponent::render();
             ?>
         </div>
         <div class="posts">
+            <h2 class="posts__title">Posts</h2>
             <?php
             foreach ($posts as $post) {
                 $author = OrganizationModel::fetch($post['author_id']);
