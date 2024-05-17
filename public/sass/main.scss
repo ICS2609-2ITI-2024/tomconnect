@@ -2,16 +2,19 @@
 
 @import "./variables";
 @import "./typography";
+
+@import "./base";
+
 @import "./buttons";
 @import "./event_card";
 
-@import "./base";
 
 @import './post_component';
 @import './footer';
 @import './navbar';
 @import './forms';
 @import './orglogin';
+@import './organization_search_card';
 
 .center {
     display: flex;
