@@ -27,13 +27,7 @@ NavbarComponent::render();
         <div>
             <h6 class="title-card">Events</h6>
         </div>
-        <div class="date-container">
-            <select name="date" id="date">
-                <option value="test">Any date</option>
-            </select>
-            <select name="time" id="time">
-                <option value="test">Any time</option>
-            </select>
+        <div class="holder">
         </div>
         <?php
         echo '<div class="events-container">';
