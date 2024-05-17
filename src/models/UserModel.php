@@ -91,7 +91,7 @@ class UserModel extends Model
     {
         try {
             $stmt = parent::connect()->prepare(self::FETCH_SQL_STATEMENT);
-            $stmt->bindParam(":user_id", $identifier);
+            $stmt->bindParam(":user_id", $user_id);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $e) {

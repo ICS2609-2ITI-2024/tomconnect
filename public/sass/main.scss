@@ -2,10 +2,12 @@
 
 @import "./variables";
 @import "./typography";
+
+@import "./base";
+
 @import "./buttons";
 @import "./event_card";
 
-@import "./base";
 
 @import './post_component';
 @import './footer';
@@ -13,3 +15,10 @@
 @import './forms';
 @import './orglogin';
 @import './event_page';
+@import './organization_search_card';
+
+.center {
+    display: flex;
+    justify-content: center;
+    width: inherit;
+}
