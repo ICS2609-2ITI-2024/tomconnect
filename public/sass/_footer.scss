@@ -2,83 +2,6 @@
 Specific styles for the footer section if applicable.
 */
 
-.col-3 {
-    height: 10px !important;
-}
-
-.col-4 {
-    height: 10px !important;
-
-}
-
-.col-5 {
-    width: 400px !important;
-    height: 10px !important;
-}
-
-.search-bar {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    border-radius: 50px;
-    height: 35px;
-    margin-right: -290px;
-    
-}
-
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-p {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
-
-    margin: 0;
-    color: #FFF;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-nav a {
-    color: #FFF;
-    font-family: "Montserrat", sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-decoration: none;
-    margin-right: 50px;
-    text-align: center;
-
-}
-
-.nav-list li {
-    margin-top: 6px;
-}
-
-.nav-list li:first-child {
-    margin-left: 0;
-}
-
-
-nav a:last-child {
-    margin-right: 0; /* Remove margin-right for the last link */
-}
-
-.col-nav {
-    width: 20px !important;
-}
-
-
-
 footer {
     flex: 0 0 auto;
     background-color: black;
@@ -87,5 +10,5 @@ footer {
     margin-top: auto;
     width: inherit;
     padding: 1rem;
-    font-size: .5rem;
+    font-size: .75rem;
 }

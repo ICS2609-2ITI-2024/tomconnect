@@ -37,5 +37,4 @@
     <img src="./assets/admin_background.png" alt="" class="login-background">
 
 </body>
-
 </html>
