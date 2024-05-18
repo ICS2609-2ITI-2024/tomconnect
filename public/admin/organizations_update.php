@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Update Organization</h2>
+                    <h2 class="mt-5 crud-title">Update Organization</h2>
                     <p>Please edit the input values and submit to update the organization record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                     <div class="update-container">
@@ -274,7 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
     </div>
     <br>
     <br>
-    
+
 </body>
 
 </html>
