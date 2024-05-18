@@ -14,6 +14,8 @@
 @import './footer';
 @import './navbar';
 @import './forms';
+@import './event_page';
+@import './event_admin';
 @import './organization';
 @import './cards';
 @import './login';
@@ -23,6 +25,12 @@
 .center {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: inherit;
+    margin: auto;
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
 }
-

@@ -4,12 +4,12 @@ namespace Tomconnect\Components;
 
 class EventCard
 {
-    public static function render($event_title, $event_location, $register_link)
+    public static function render($event_title, $event_location, $register_link, $event_start_date, $event_end_date, $event_time)
     {
 ?>
         <div class="event-card">
             <div class="event-container">
-                <div class="event-date">MON, APRIL 15 AT 8AM</div>
+                <div class="event-date"><?= date('D, F j', strtotime($event_start_date)) ?> AT <?= date('g:i A', strtotime($event_time)) ?></div>
                 <div class="event-title"><?= ucwords($event_title) ?></div>
                 <div class="event-location">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
