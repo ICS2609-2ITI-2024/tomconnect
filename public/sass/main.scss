@@ -2,11 +2,14 @@
 
 @import "./variables";
 @import "./typography";
-@import "./buttons";
-@import "./event_card";
 
 @import "./base";
 
+@import "./buttons";
+@import "./event_card";
+
+@import "./orgs_admin";
+@import "./sign_up";
 @import './post_component';
 @import './footer';
 @import './navbar';
