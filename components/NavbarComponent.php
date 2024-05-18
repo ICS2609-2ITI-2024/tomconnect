@@ -24,7 +24,7 @@ class NavbarComponent
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="">
+                    <a href="event.php">
                         Events
                     </a>
                 </div>
