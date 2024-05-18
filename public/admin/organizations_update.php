@@ -126,10 +126,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
         ];
 
         // Update the organization using the model
-        OrganizationModel::update((int)$org_id, $data);
+        OrganizationModel::update($org_id, $data);
 
         // Records updated successfully. Redirect to landing page
-        header("location: index.php");
+        header("location: organizations_dashboard.php");
         exit();
     }
 } else {
