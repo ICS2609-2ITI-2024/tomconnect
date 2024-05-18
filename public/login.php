@@ -7,6 +7,8 @@
     <title>TomConnect</title>
     <link rel="shortcut icon" type="image/x-icon" href="../public/assets/logo.ico">
     <link rel="stylesheet" href="./css/main.css">
+
+
 </head>
 <body>
 
@@ -14,17 +16,27 @@
     <form action="../controllers/login.php" method="post">
 
     <div class="login-container">
-        <img src="./assets/logo.png" alt="" class="back-img">
-        <h1 class="login-text"> Welcome Back! </h1>
 
-        <div class="login-field">
-            <img src="./assets/user.png" alt="" class="login-icon" ></img>
-            <input type="text" name="identifier" placeholder="Username/Email" class="login-input">
-        </div>
-        <br>
-        <div class="login-field">
-            <img src="./assets/lock.png" alt="" class="login-icon" ></img>
-            <input type="password" name="password" placeholder="Password" class="login-input">
+            <img src="./assets/logo.png" alt="" class="logo-login">
+
+            <h1 class="login-text"> Welcome Back! </h1>
+
+        <div class="main-content-container">
+            <div class="login-field">
+                <div class="login-icon-container">
+                    <img src="./assets/user.png" alt="" class="login-icon">
+                </div>
+                <input type="text" name="identifier" placeholder="Username/Email" class="login-input">
+            </div>
+
+            <br>
+            
+            <div class="login-field">
+                <div class="login-icon-container">
+                    <img src="./assets/lock.png" alt="" class="login-icon">
+                </div>
+                <input type="password" name="password" placeholder="Password" class="login-input">
+            </div>
         </div>
 
         <input type="submit" value="LOG IN" class="login-button">
