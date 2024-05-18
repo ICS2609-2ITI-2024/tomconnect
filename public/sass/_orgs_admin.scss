@@ -68,6 +68,14 @@ Styles for Admin-side Pages
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.update-container {
+    max-width: 100rem;
+    padding: 2rem;
+    border-radius: 25px;
+    background-color: #EFEFEF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .organization {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -76,6 +84,16 @@ Styles for Admin-side Pages
 
 .form-group {
     margin-bottom: 0.5rem;
+}
+
+.crud-title {
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .dashboard-title {
@@ -107,4 +125,11 @@ Styles for Admin-side Pages
 .table th {
     font-weight: 700;
     background-color: #f2f2f2;
+}
+
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    position: relative; /* Ensure position is relative */
+    z-index: 1; /* Set z-index to ensure it's above the image */
 }
