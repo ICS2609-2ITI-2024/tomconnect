@@ -12,33 +12,22 @@ use Tomconnect\Models\EventModel;
 
 Header::render('Tomconnect Delete Record');
 
-// Prepare a delete statement
-$sql = "UPDATE events SET is_deleted = 1 WHERE event_id = :event_id;";
-
 if (isset($_GET["event_id"]) && !empty(trim($_GET["event_id"]))) {
-    // Get the organization ID from the URL
     $event_id = trim($_GET["event_id"]);
 
-    // Process form data when the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Attempt to delete the organization record
-        if (EventModel::delete((int)$event_id)) {
-            // Redirect to the org dashboard page after successful deletion
+        if (!EventModel::delete((int)$event_id)) {
             header("location: event_dashboard.php");
             exit();
         } else {
-            // Display an error message if deletion fails
             echo "Error deleting the event record.";
         }
     }
 } else {
-    // Redirect to the error page if org_id is not provided in the URL
     header("location: error.php");
     exit();
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,11 +52,11 @@ if (isset($_GET["event_id"]) && !empty(trim($_GET["event_id"]))) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Delete Record</h2>
+                    <h2 class="mt-5 mb-4 crud-title">Delete Record</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?event_id=$event_id"); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="org_id" value="<?php echo $org_id; ?>" />
-                            <p>Are you sure you want to delete this organization record?</p>
+                            <p>Are you sure you want to delete this event record?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
                                 <a href="event_dashboard.php" class="btn btn-secondary ml-2">No</a>
