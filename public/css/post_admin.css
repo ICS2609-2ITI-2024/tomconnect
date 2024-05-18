@@ -1,58 +1,9 @@
-.content-column {
-  width: 100px; /* Adjust the width as needed */
-}
-
 /*
 Styles for Admin-side Pages
 */
-.addnew-org-button {
-  align-items: center;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: #FCFCFD;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395A;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: Inter;
-  font-weight: 600;
-  height: 48px;
-  margin-left: 35rem;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow, transform;
-  font-size: 18px;
-}
-
-.addnew-org-button:hover {
-  box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.addnew-org-button:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
-.addnew-org-button:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
-  transform: translateY(2px);
+.content-column {
+  max-width: 200px; /* Set maximum width for the column */
+  overflow-wrap: break-word; /* Allow content to wrap */
 }
 
 .back-img-blurred {
@@ -65,7 +16,7 @@ Styles for Admin-side Pages
 
 .dashboard-container {
   max-width: 80%;
-  margin: 2rem auto; /* Centering the container */
+  margin: 2rem auto;
   padding: 1rem;
   border-radius: 25px;
   background-color: #EFEFEF;
@@ -133,6 +84,6 @@ Styles for Admin-side Pages
 .wrapper {
   width: 600px;
   margin: 0 auto;
-  position: relative; /* Ensure position is relative */
-  z-index: 1; /* Set z-index to ensure it's above the image */
+  position: relative;
+  z-index: 1;
 }/*# sourceMappingURL=post_admin.css.map */
