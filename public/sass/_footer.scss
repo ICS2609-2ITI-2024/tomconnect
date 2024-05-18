@@ -3,12 +3,19 @@ Specific styles for the footer section if applicable.
 */
 
 footer {
-    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     color: white;
     text-align: center;
-    margin-top: auto; /* Push the footer to the bottom */
+    margin-top: auto;
     width: inherit;
     padding: 1rem;
     font-size: .75rem;
+
+    p {
+        text-align: center;
+        color: white;
+    }
 }

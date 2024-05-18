@@ -2,7 +2,6 @@
 
 namespace Tomconnect\Components;
 
-session_start();
 
 class CreatePostComponent
 {

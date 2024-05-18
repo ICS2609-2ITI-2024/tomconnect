@@ -9,13 +9,13 @@ class PostComponent
     {
 ?>
         <article class="post-card">
-            <div class="card cardCustom">
+            <div class="card">
                 <div class="author-container">
-                    <a href="">
-                        <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'assets/IcBaselineAccountCircle.png' ?> alt="" class="profile-image">
+                    <a href="profile.php?p=<?= $author_name ?>">
+                        <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'assets/IcBaselineAccountCircle.png' ?> alt="" class="post-profile-image">
                     </a>
                     <div class="author-name-and-date-published">
-                        <h4 class="mb-0 nameStyle"><a href=""><?= ucwords($author_name) ?></a></h4>
+                        <h4 class="mb-0 nameStyle"><a href="profile.php?p=<?= $author_name ?>"><?= ucwords($author_name) ?></a></h4>
                         <small><?= self::timeAgo(strtotime($date_published)) ?></small>
                     </div>
                 </div>
