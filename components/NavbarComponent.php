@@ -13,13 +13,13 @@ class NavbarComponent
                 <h1>TOMCONNECT.</h1>
             </div>
             <div class="nav-items">
-                <div class="nav-item">
+                <div href="index.php" class="nav-item">
                     <a href="index.php">
                         Feed
                     </a>
                 </div>
-                <div class="nav-item">
-                    <a href="">
+                <div href="organizations.php" class="nav-item">
+                    <a href="organization.php">
                         Organizations
                     </a>
                 </div>
