@@ -15,6 +15,7 @@ Header::render('Tomconnect Delete Record');
     $sql = "DELETE FROM tomconnect_db WHERE org_id = ?";
 
     if (isset($_GET["org_id"]) && !empty(trim($_GET["org_id"]))) {
+        
         // Get the organization ID from the URL
         $org_id = trim($_GET["org_id"]);
 
@@ -60,7 +61,7 @@ Header::render('Tomconnect Delete Record');
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Delete Record</h2>
+                    <h2 class="mt-5 mb-4 crud-title">Delete Record</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?org_id=$org_id"); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="org_id" value="<?php echo $org_id; ?>" />
