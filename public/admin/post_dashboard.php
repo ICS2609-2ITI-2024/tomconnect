@@ -9,6 +9,7 @@ session_start();
 use Tomconnect\Components\Header;
 use Tomconnect\Components\Footer;
 use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Models\PostModel;
 
 Header::render('Tomconnect Sign Up');
 
@@ -34,47 +35,46 @@ Header::render('Tomconnect Sign Up');
 </head>
 
 <body>
+
     <img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
 
     <div class="dashboard-container">
-        <h1 class="dashboard-title">Update Organization</h1>
+        <h1 class="dashboard-title">Organizations</h1>
+        <br>
+        <a href="" class="addnew-org-button">Add New Organization</a>
         <br>
 
         <?php
         $full_orgs = OrganizationModel::fetch_all();
-        if (!empty($full_orgs)) {
+        $full_post = PostModel::fetch_all();
+        if (!empty($full_post) & !empty($full_orgs)) {
             echo '<table class="table table-bordered table-striped">';
             echo '<thead>';
             echo '<tr>';
             echo '<th>Org ID</th>';
             echo '<th>Name</th>';
-            echo '<th>Description</th>';
-            echo '<th>Website</th>';
-            echo '<th>Logo URL</th>';
-            echo '<th>Registration URL</th>';
+            echo '<th class="content-column">Content</th>'; // Added class here
+            echo '<th>Post URL</th>';
+            echo '<th></th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
 
-            foreach ($full_orgs as $row) {
-                echo '<tr>';
-                echo '<td>' . htmlspecialchars((string) $row["org_id"]) . '</td>';
-                echo '<td>' . htmlspecialchars((string) $row["name"]) . '</td>';
-                echo '<td>' . htmlspecialchars((string) $row["description"]) . '</td>';
-                echo '<td>' . htmlspecialchars((string) $row["website"]) . '</td>';
-                echo '<td>' . htmlspecialchars((string) $row["logo_url"]) . '</td>';
-                echo '<td>' . htmlspecialchars((string) $row["registration_url"]) . '</td>';
-                echo "<td>";
-                echo '<a href="organizations_read?org_id=' . $row['org_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-
-                echo '<a href="organizations_update.php?org_id=' . $row['org_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-
-                echo '<a href="organizations_delete.php?org_id=' . $row['org_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                echo "</td>";
-                echo "</tr>";
-                echo '</tr>';
+            foreach ($full_orgs as $org_row) {
+                foreach ($full_post as $post_row) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars((string) $org_row["org_id"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $org_row["name"]) . '</td>';
+                    echo '<td class="col-md-4">' . htmlspecialchars((string) $post_row["content"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $post_row["media_url"]) . '</td>';
+                    echo '<td>';
+                    echo '<a href="organizations_read?org_id=' . $org_row['org_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                    echo '<a href="organizations_update.php?org_id=' . $org_row['org_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                    echo '<a href="organizations_delete.php?org_id=' . $org_row['org_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                    echo '</td>';
+                    echo '</tr>';
+                }
             }
-
             echo '</tbody>';
             echo '</table>';
         } else {
@@ -82,7 +82,6 @@ Header::render('Tomconnect Sign Up');
         }
         ?>
     </div>
-
 
     <?php
     Footer::render();
