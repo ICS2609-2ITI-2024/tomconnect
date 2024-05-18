@@ -14,8 +14,9 @@
 @import './footer';
 @import './navbar';
 @import './forms';
+@import './organization';
+@import './cards';
 @import './login';
-
 @import './organization_search_card';
 @import './profile';
 
@@ -24,3 +25,4 @@
     justify-content: center;
     width: inherit;
 }
+
