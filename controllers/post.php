@@ -24,11 +24,11 @@ use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Controllers\Post;
 use Tomconnect\Models\PostModel;
 
-$logged_user = $_SESSION['logged_user'];
+$logged_user_id = $_SESSION['logged_id'];
 
 $post_controller = new Post();
 
-$post_controller->post(OrganizationModel::get_id($logged_user));
+$post_controller->post(OrganizationModel::search_from_column('admin_id', $logged_user_id)[0]['org_id']);
 
 header("Location: " . $_SERVER['HTTP_REFERER']);
 die();

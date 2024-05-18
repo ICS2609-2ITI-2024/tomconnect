@@ -82,6 +82,14 @@ class OrganizationModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function search_from_column(string $column, $query)
+    {
+        $sql = "SELECT * FROM organizations WHERE is_deleted = 0 AND " . $column . " = :q ORDER BY created_at DESC;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':q' => $query]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Retrieves the ID of an organization by its name.
      * 

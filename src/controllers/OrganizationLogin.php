@@ -119,8 +119,10 @@ class OrganizationLogin extends Controller
         $_SESSION['is_logged_in'] = true;
         if ($this->is_email()) {
             $_SESSION['logged_user'] = UserModel::find('email', self::$identifier)['username'];
+            $_SESSION['logged_id'] = UserModel::find('email', self::$identifier)['user_id'];
         } else {
             $_SESSION['logged_user'] = UserModel::find('username', self::$identifier)['username'];
+            $_SESSION['logged_id'] = UserModel::find('username', self::$identifier)['user_id'];
         }
     }
 
