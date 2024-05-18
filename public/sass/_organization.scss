@@ -1,3 +1,10 @@
+body .bg-org {
+    position: fixed;
+    top: 0;
+    z-index: -500;
+    width: 100%;
+}
+
 .org-content-container {
     display: flex;
     flex-direction: column;
@@ -46,6 +53,54 @@
 .org-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 10fr);
+    width: 55rem;
     gap: 1rem;
     padding-top: 2rem;
 }
+
+@media screen and (min-width: 1024px) {
+    .org-content-container {
+      width: 45rem;
+      height: 20rem; 
+    }
+  
+    .org-grid-container {
+      width: 65rem; 
+    }
+  }
+  
+  @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .org-content-container {
+      width: 40rem; 
+      height: 17rem;
+    }
+  
+    .org-grid-container {
+      width: 55rem;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .org-content-container {
+      width: 100%;
+      height: auto;
+      margin-top: 3rem;
+    }
+  
+    .org-text-heading {
+      font-size: 2rem; 
+    }
+  
+    .org-text-content,
+    .org-text-end {
+      font-size: 0.7rem;
+      max-width: 90%;
+    }
+  
+    .org-grid-container {
+      width: 90%;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 0.5rem;
+    }
+  }
+  

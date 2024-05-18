@@ -2,7 +2,7 @@
 
 .card {
   border-radius: .5rem;
-  overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
   &:hover {
     transform: scale(1.03);
 
-    span {
+    .organization-title{
       display: none;
     }
   }
@@ -23,18 +23,19 @@
     opacity: 30%;
   }
 
-  img:hover {
-    transition: transform 0.3s ease-in-out;
-    transform: scale(1.1);
-    opacity: 100;
-    transition: opacity 0.7s, ease-in-out;
-  }
-
-  span {
+  .organization-title {
     position: absolute;
     margin: auto;
     font-family: "Montserrat";
     font-weight: 700;
     color: white;
+    word-wrap: break-word;
+  }
+
+  img:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+    opacity: 100;
+    transition: opacity 0.7s, ease-in-out;
   }
 }

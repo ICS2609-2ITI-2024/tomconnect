@@ -22,6 +22,8 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     NavbarComponent::render();
 
     ?>
+
+    <img src="./assets/org-directory_background.png" alt="" class="bg-org">
     
     <div class="org-content-container">
         <div class="org-text-heading">
