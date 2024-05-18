@@ -33,6 +33,52 @@ Header::render('Tomconnect Sign Up');
 <body>
     <img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
 
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Update Organization</h1>
+        <br>
+
+        <?php 
+            $full_orgs = OrganizationModel::fetch_all();
+            if (!empty($full_orgs)) {
+                echo '<table class="table table-bordered table-striped">';
+                echo '<thead>';
+                echo '<tr>';
+                echo '<th>Org ID</th>';
+                echo '<th>Name</th>';
+                echo '<th>Description</th>';
+                echo '<th>Website</th>';
+                echo '<th>Logo URL</th>';
+                echo '<th>Registration URL</th>';
+                echo '</tr>';
+                echo '</thead>';
+                echo '<tbody>';
+
+                foreach ($full_orgs as $row) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars((string) $row["org_id"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $row["name"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $row["description"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $row["website"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $row["logo_url"]) . '</td>';
+                    echo '<td>' . htmlspecialchars((string) $row["registration_url"]) . '</td>';
+                    echo "<td>";
+                                echo '<a href="organizations_read?org_id=' . $row['org_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+
+                                echo '<a href="organizations_update.php?org_id=' . $row['org_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                
+                                echo '<a href="organizations_delete.php?org_id=' . $row['org_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo "</td>";
+                                echo "</tr>";
+                    echo '</tr>';
+                }
+
+                echo '</tbody>';
+                echo '</table>';
+            } else {
+                echo '<div class="alert alert-danger"><em>No organizations found.</em></div>';
+            }
+        ?>
+    </div>
 
 
 <?php
