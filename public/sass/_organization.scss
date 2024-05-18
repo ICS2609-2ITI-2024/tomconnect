@@ -45,7 +45,7 @@
 
 .org-grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 10fr);
     gap: 1rem;
     padding-top: 2rem;
 }
