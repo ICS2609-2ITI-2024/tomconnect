@@ -4,10 +4,6 @@
 <?php
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
-use Tomconnect\Components\CreatePostComponent;
-use Tomconnect\Components\PostComponent;
-use Tomconnect\Models\PostModel;
-use Tomconnect\Models\OrganizationModel;
 use Tomconnect\Components\Footer;
 use Tomconnect\Components\Header;
 use Tomconnect\Components\NavbarComponent;
@@ -17,8 +13,6 @@ use Tomconnect\Models\EventModel;
 Header::render('tomconnect');
 NavbarComponent::render();
 ?>
-
-
 <img src="./assets/ust_landscape.png" alt="" class="back-img">
 <div class="main-feed">
     <div class="left">
