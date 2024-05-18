@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["event_id"]) && !empty(
                             </div>
                             <input type="hidden" name="event_id" value="<?php echo $event_id; ?>" />
                             <input type="submit" class="btn btn-primary" value="Submit">
-                            <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                            <a href="event_dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
                         </div>
                     </form>
                 </div>

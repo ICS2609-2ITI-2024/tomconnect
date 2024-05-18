@@ -40,6 +40,8 @@ Header::render('Tomconnect Sign Up');
     <div class="event-container">
         <h1 class="dashboard-title">Events</h1>
         <br>
+        <a href="" class="addnew-event-button">Add New Event</a>
+        <br>
 
         <?php
         $full_events = EventModel::fetch_all();
