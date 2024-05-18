@@ -72,11 +72,11 @@ Header::render('Tomconnect Sign Up');
                 echo '<td>' . htmlspecialchars((string) $row["link"]) . '</td>';
                 echo '<td>' . htmlspecialchars((string) $row["location"]) . '</td>';
                 echo "<td>";
-                echo '<a href="event_read?org_id=' . $row['event_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                echo '<a href="event_read?event_id=' . $row['event_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
 
-                echo '<a href="event_update.php?org_id=' . $row['event_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                echo '<a href="event_update.php?event_id=' . $row['event_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
 
-                echo '<a href="event_delete.php?org_id=' . $row['event_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                echo '<a href="event_delete.php?event_id=' . $row['event_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                 echo "</td>";
                 echo "</tr>";
                 echo '</tr>';
