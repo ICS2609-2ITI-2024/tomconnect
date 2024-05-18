@@ -138,14 +138,14 @@ class OrganizationModel extends Model
      */
     private static function generate_update_statement(array $data): string
     {
-        $sql = "UPDATE organizations SET";
+        $sql = "UPDATE organizations SET ";
+        $columns = [];
         foreach ($data as $key => $value) {
-            if (end($data) == $value) {
-                $sql .= " " . $key . " = :" . $key;
-            } else {
-                $sql .= " " .  $key . " = :" . $key . ",";
+            if ($key !== 'org_id') {
+                $columns[] = "$key = :$key";
             }
         }
+        $sql .= implode(", ", $columns);
         $sql .= " WHERE org_id = :org_id";
         return $sql;
     }
