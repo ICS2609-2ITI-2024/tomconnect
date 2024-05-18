@@ -37,16 +37,14 @@ Header::render('Tomconnect Sign Up');
 
     <img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
 
-    <div class="dashboard-container">
+    <div class="event-container">
         <h1 class="dashboard-title">Events</h1>
-        <br>
-        <a href="" class="addnew-org-button">Add New Event</a>
         <br>
 
         <?php
         $full_events = EventModel::fetch_all();
         if (!empty($full_events)) {
-            echo '<table class="table table-bordered table-striped event-table">';
+            echo '<table class="table table-bordered table-striped">';
             echo '<thead>';
             echo '<tr>';
             echo '<th>Event ID</th>';

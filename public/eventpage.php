@@ -33,8 +33,14 @@ NavbarComponent::render();
         echo '<div class="events-container">';
         foreach (EventModel::fetch_all() as $event) {
             echo '<div class="event-card">';
-            $author = EventModel::fetch($event['event_id']);
-            EventCard::render($event['description'], $event['location'], $event['link']);
+            EventCard::render(
+                $event['description'],
+                $event['location'],
+                $event['link'],
+                $event['event_start_date'],
+                $event['event_end_date'],
+                $event['event_time']
+            );
             echo '</div>';
         }
         echo '</div>';

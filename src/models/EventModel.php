@@ -142,7 +142,7 @@ class EventModel extends Model
      */
     private static function generate_update_statement(array $data): string
     {
-        $sql = "UPDATE event SET";
+        $sql = "UPDATE events SET";
         foreach ($data as $key => $value) {
             if (end($data) == $value) {
                 $sql .= " " . $key . " = :" . $key;
