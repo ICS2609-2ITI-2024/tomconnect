@@ -72,7 +72,7 @@ Header::render('Tomconnect Sign Up');
                             echo '<td>';
                             echo '<a href="organizations_read?org_id=' . $org_row['org_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
                             echo '<a href="organizations_update.php?org_id=' . $org_row['org_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                            echo '<a href="organizations_delete.php?org_id=' . $org_row['org_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                            echo '<a href="post_delete.php?org_id=' . $post_row['post_id'] . '" class="mr-1" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                             echo '</td>';
                             echo '</tr>';
                         }

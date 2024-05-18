@@ -82,6 +82,14 @@ class OrganizationModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function search_from_column(string $column, $query)
+    {
+        $sql = "SELECT * FROM organizations WHERE is_deleted = 0 AND " . $column . " = :q ORDER BY created_at DESC;";
+        $stmt = parent::connect()->prepare($sql);
+        $stmt->execute([':q' => $query]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Retrieves the ID of an organization by its name.
      * 
@@ -138,14 +146,14 @@ class OrganizationModel extends Model
      */
     private static function generate_update_statement(array $data): string
     {
-        $sql = "UPDATE organizations SET";
+        $sql = "UPDATE organizations SET ";
+        $columns = [];
         foreach ($data as $key => $value) {
-            if (end($data) == $value) {
-                $sql .= " " . $key . " = :" . $key;
-            } else {
-                $sql .= " " .  $key . " = :" . $key . ",";
+            if ($key !== 'org_id') {
+                $columns[] = "$key = :$key";
             }
         }
+        $sql .= implode(", ", $columns);
         $sql .= " WHERE org_id = :org_id";
         return $sql;
     }

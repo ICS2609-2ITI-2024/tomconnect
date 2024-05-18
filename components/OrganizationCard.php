@@ -8,7 +8,7 @@ class OrganizationCard
     {
 ?>
         <div class="organization-card">
-            <a href="index.php"><img src=<?php if ($image_url != null) echo $image_url ?> class="card-img-top" alt="..." id=<?= $org_id ?>></a>
+            <a href="profile.php?p=<?= $organization_name ?>"><img src=<?php if ($image_url != null) echo $image_url ?> class="card-img-top" alt="..." id=<?= $org_id ?>></a>
             <div class="organization-title"><?= $organization_name ?></div>
         </div>
 <?php

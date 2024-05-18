@@ -7,7 +7,7 @@ session_start();
 
 use Tomconnect\Components\Header;
 use Tomconnect\Components\Footer;
-use Tomconnect\Models\OrganizationModel;
+use Tomconnect\Models\PostModel;
 
 Header::render('Tomconnect Delete Record');
 
@@ -15,8 +15,8 @@ if (isset($_GET["org_id"]) && !empty(trim($_GET["org_id"]))) {
     $org_id = trim($_GET["org_id"]);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (!OrganizationModel::delete((int)$org_id)) {
-            header("location: organizations_dashboard.php");
+        if (!PostModel::delete((int)$org_id)) {
+            header("location: post_dashboard.php");
             exit();
         } else {
             echo "Error deleting the organization record.";

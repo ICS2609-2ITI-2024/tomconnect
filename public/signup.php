@@ -21,7 +21,7 @@ Header::render('Tomconnect Sign Up');
             <h1 class="signup-title">Sign Up</h1>
 
             <div class="form-group">
-                <h3> Enter your Username </h3>
+                <h3 class="signupform-title"> Enter your Username </h3>
                 <input type="text" name="username" id="">
                 <span>
                     <?php if (isset($_SESSION['username_error_message'])) {
@@ -34,7 +34,7 @@ Header::render('Tomconnect Sign Up');
             <br>
 
             <div class="form-group">
-                <h3> Enter your Organization's Email </h3>
+                <h3 class="signupform-title"> Enter your Organization's Email </h3>
                 <input type="email" name="email" id="">
                 <span>
                     <?php if (isset($_SESSION['email_error_message'])) {
@@ -47,7 +47,7 @@ Header::render('Tomconnect Sign Up');
             <br>
 
             <div class="form-group">
-                <h3> Enter your Password </h3>
+                <h3 class="signupform-title"> Enter your Password </h3>
                 <input type="password" name="password" id="">
                 <span>
                     <?php if (isset($_SESSION['password_error_message'])) {
@@ -60,7 +60,7 @@ Header::render('Tomconnect Sign Up');
             <br>
 
             <div class="form-group">
-                <h3> Confirm your Password </h3>
+                <h3 class="signupform-title"> Confirm your Password </h3>
                 <input type="password" name="confirm_password" id="">
                 <span>
                     <?php if (isset($_SESSION['confirm_password_error_message'])) {
@@ -73,7 +73,7 @@ Header::render('Tomconnect Sign Up');
             <br>
 
             <div class="form-group">
-                <h3> Enter your Organization's Name </h3>
+                <h3 class="signupform-title"> Enter your Organization's Name </h3>
                 <input type="text" name="organization_name" id="">
                 <span>
                     <?php if (isset($_SESSION['organization_name_error_message'])) {
@@ -86,7 +86,7 @@ Header::render('Tomconnect Sign Up');
             <br>
 
             <div class="form-group">
-                <h3> Enter your Organization's Description </h3>
+                <h3 class="signupform-title"> Enter your Organization's Description </h3>
                 <textarea name="organization_description" id=""></textarea>
                 <span>
                     <?php if (isset($_SESSION['organization_description_error_message'])) {
@@ -98,8 +98,12 @@ Header::render('Tomconnect Sign Up');
             </div>
             <br>
             
-            <input type="submit" value="Signup">
+            <input type="submit" class="addnew-org-button" value="Signup">
         </div>
+        <br>
+        <br>
+        <br>
+
     </form>
 </div>
 

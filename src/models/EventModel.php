@@ -50,8 +50,7 @@ class EventModel extends Model
      * This constant represents the SQL statement used to update the 'is_deleted' flag
      * to 1 for a specific event record in the 'events' table based on the user ID.
      */
-    const DELETE_SQL_STATEMENT = "UPDATE events SET is_deleted = 1 WHERE user_id = :user_id;";
-
+    const DELETE_SQL_STATEMENT = "UPDATE events SET is_deleted = 1 WHERE event_id = :event_id;";
     /**
      * Creates a new event record in the database.
      * 
@@ -128,7 +127,7 @@ class EventModel extends Model
     public static function delete($event_id): void
     {
         $stmt = parent::connect()->prepare(self::DELETE_SQL_STATEMENT);
-        $stmt->execute([':user_id' => $event_id]);
+        $stmt->execute([':event_id' => $event_id]);
     }
 
     /**
@@ -142,7 +141,7 @@ class EventModel extends Model
      */
     private static function generate_update_statement(array $data): string
     {
-        $sql = "UPDATE event SET";
+        $sql = "UPDATE events SET";
         foreach ($data as $key => $value) {
             if (end($data) == $value) {
                 $sql .= " " . $key . " = :" . $key;

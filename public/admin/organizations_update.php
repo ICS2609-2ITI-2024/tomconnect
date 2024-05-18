@@ -12,8 +12,8 @@ use Tomconnect\Models\OrganizationModel;
 Header::render('Tomconnect Update Organization');
 
 // Define variables and initialize with empty values
-$name = $description = $admin_id = $website = $logo_url = $location = $is_active = $is_deleted = $is_registration_open = $registration_url = $cover_img_url = "";
-$name_err = $description_err = $admin_id_err = $website_err = $logo_url_err = $location_err = $is_active_err = $is_deleted_err = $is_registration_open_err = $registration_url_err = $cover_img_url_err = "";
+$name = $description = $admin_id = $website = $logo_url = $location = $registration_url = $cover_img_url = "";
+$name_err = $description_err = $admin_id_err = $website_err = $logo_url_err = $location_err = $registration_url_err = $cover_img_url_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_POST["org_id"])) {
@@ -68,30 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
         $location = $input_location;
     }
 
-    // Validate Is Active
-    $input_is_active = trim($_POST["is_active"]);
-    if ($input_is_active === "") {
-        $is_active_err = "Please enter a valid status.";
-    } else {
-        $is_active = $input_is_active;
-    }
-
-    // Validate Is Deleted
-    $input_is_deleted = trim($_POST["is_deleted"]);
-    if ($input_is_deleted === "") {
-        $is_deleted_err = "Please enter a valid status.";
-    } else {
-        $is_deleted = $input_is_deleted;
-    }
-
-    // Validate Is Registration Open
-    $input_is_registration_open = trim($_POST["is_registration_open"]);
-    if ($input_is_registration_open === "") {
-        $is_registration_open_err = "Please enter a valid status.";
-    } else {
-        $is_registration_open = $input_is_registration_open;
-    }
-
     // Validate Registration URL
     $input_registration_url = trim($_POST["registration_url"]);
     if (empty($input_registration_url)) {
@@ -109,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
     }
 
     // Check input errors before inserting in database
-    if (empty($name_err) && empty($description_err) && empty($admin_id_err) && empty($website_err) && empty($logo_url_err) && empty($location_err) && empty($is_active_err) && empty($is_deleted_err) && empty($is_registration_open_err) && empty($registration_url_err) && empty($cover_img_url_err)) {
+    if (empty($name_err) && empty($description_err) && empty($admin_id_err) && empty($website_err) && empty($logo_url_err) && empty($location_err) && empty($registration_url_err) && empty($cover_img_url_err)) {
         // Prepare data array
         $data = [
             'name' => $name,
@@ -118,18 +94,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
             'website' => $website,
             'logo_url' => $logo_url,
             'location' => $location,
-            'is_active' => $is_active,
-            'is_deleted' => $is_deleted,
-            'is_registration_open' => $is_registration_open,
             'registration_url' => $registration_url,
             'cover_img_url' => $cover_img_url
         ];
 
         // Update the organization using the model
-        OrganizationModel::update((int)$org_id, $data);
+        OrganizationModel::update($org_id, $data);
 
         // Records updated successfully. Redirect to landing page
-        header("location: index.php");
+        header("location: organizations_dashboard.php");
         exit();
     }
 } else {
@@ -149,9 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
             $website = $organization["website"];
             $logo_url = $organization["logo_url"];
             $location = $organization["location"];
-            $is_active = $organization["is_active"];
-            $is_deleted = $organization["is_deleted"];
-            $is_registration_open = $organization["is_registration_open"];
             $registration_url = $organization["registration_url"];
             $cover_img_url = $organization["cover_img_url"];
         } else {
@@ -230,24 +200,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["org_id"]) && !empty($_
                             <label>Location</label>
                             <input type="text" name="location" class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $location; ?>">
                             <span class="invalid-feedback"><?php echo $location_err; ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Is Active</label>
-                            <input type="text" name="is_active" class="form-control <?php echo (!empty($is_active_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $is_active; ?>">
-                            <span class="invalid-feedback"><?php echo $is_active_err; ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Is Deleted</label>
-                            <input type="text" name="is_deleted" class="form-control <?php echo (!empty($is_deleted_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $is_deleted; ?>">
-                            <span class="invalid-feedback"><?php echo $is_deleted_err; ?></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Is Registration Open</label>
-                            <input type="text" name="is_registration_open" class="form-control <?php echo (!empty($is_registration_open_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $is_registration_open; ?>">
-                            <span class="invalid-feedback"><?php echo $is_registration_open_err; ?></span>
                         </div>
 
                         <div class="form-group">
