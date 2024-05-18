@@ -4,8 +4,11 @@
     justify-content: space-between;
     align-items: center;
 
-    position: sticky;
+    position: fixed;
     top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     
     background-color: black;
     color: white;

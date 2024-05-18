@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 session_start();
+
 require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +17,14 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     <title>TomConnect</title>
     <link rel="shortcut icon" type="image/x-icon" href="../public/assets/logo.ico">
 
-    <!-- <link rel="stylesheet" href="../public/css/main.css"> -->
-    <link rel="stylesheet" href="../components/header_footer.css">
-    <link rel="stylesheet" href="org_acc.css">
+    <link rel="stylesheet" href="./css/main.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <?php
 
+    <?php
     use Tomconnect\Components\CreatePostComponent;
     use Tomconnect\Components\PostComponent;
     use Tomconnect\Components\Footer;
@@ -41,7 +41,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
     Header::render('tomconnect');
     NavbarComponent::render();
 
-    /** 
+/** 
      * Container for Organization's Cover Photo
      * retrieve cover_img_url from organizations database
      */
@@ -50,9 +50,12 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
         public static function render($image_url, $org_id)
         {
     ?>
-            <div class="card">
-                <img src="<?php echo $image_url ?>" class="card-img-top" alt="..." id="<?= $org_id ?>">
+
+    <!--replace img src with "< ?php echo $image_url ?>" -->
+            <div class="card org_coverphoto">
+                <img src="./assets/admin_background.png" class="card-img-bottom" alt="..." id="<?= $org_id ?>">
             </div>
+
         <?php
         }
     }
@@ -75,16 +78,11 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
 
     /** 
-     * Handler of "About" Section
+     *  "About" Section
      * retrieve description from organizations database
      */
-    class About
-    {
-    }
-
 
     $org = OrganizationModel::fetch(3);
-    echo $org['name'];
     ?>
 
     <!-- Front End for Organization Account -->
@@ -94,7 +92,7 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
         <div class="row">
             <div class="col-12">
                 <?php
-                CoverPhoto::render($org['cover_img_url'], $org['org_id']);
+                    CoverPhoto::render($org['cover_img_url'], $org['org_id']);
                 ?>
             </div>
         </div>
@@ -109,12 +107,14 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
         <!-- row of quick org info and about -->
         <div class="row">
-            <div class="col-3">
+            <div class="col-4">
                 <div class="col"> <!--col for icons-->
                     <div class="row icon-info">
                         <img src="./assets/Location.png" alt="Location Icon">
-                        <h3> Location </h3>
-                        <p>Location</p>
+                        <h2 class="orgInfo-title"> Location </h2>
+                        <?php 
+                            echo $org['location'];
+                            ?> </p>
                     </div>
 
                     <div class="row icon-info">
@@ -135,9 +135,10 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
 
                     <!--Retrieve Org's Contact Email-->
                     <div class="row">
-                        <h5> Location </h5>
-
-                        <p>Contact Email</p>
+                        <h2 class="orgInfo-title"> Contact Us </h2>
+                        <?php 
+                            echo $org['location'];
+                            ?> </p>
                     </div>
 
                     <!--Retrieve Org's Website-->
@@ -152,26 +153,32 @@ require_once (dirname(__DIR__)) . "\\vendor\\autoload.php";
                 </div>
             </div>
 
-            <div class="col">
-                <?php
-                echo "<h1> About </h1>";
-
-                ?>
-
+            <div class="col-8">
                 <!-- row of posts // last row-->
-                <div class="row">
-                    <h1> Posts </h1>
-                    <?php
-                    CreatePostComponent::render();
-                    foreach (PostModel::fetch_all() as $post) {
-                        $author = OrganizationModel::fetch($post['author_id']);
-                        PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
-                    }
-                    ?>
+                <div class="row justify-content-center white-container">
+                    <div class="about-container">
+                        <h1 class="orgTitle"> About </h1>
+                        <p> <?php 
+                            $org = OrganizationModel::fetch(3);
+                            echo $org['description'];
+                            ?> </p>
+                    </div>
+
+                    <div class="posts-container">
+                        <h1 class="orgTitle">  Posts </h1>
+                            <?php
+                            CreatePostComponent::render();
+                            foreach (PostModel::fetch_all() as $post) {
+                                $author = OrganizationModel::fetch($post['author_id']);
+                                PostComponent::render($author['name'], $author['logo_url'], $post['content'], $post['media_url'], $post['created_at']);
+                            }
+                            ?>
+                    </div>
                 </div>
-
-
             </div>
+
+        </div>
+    </div>
             <?php
             Footer::render();
             ?>

@@ -16,3 +16,13 @@
 @import './forms';
 @import './organization';
 @import './cards';
+@import './login';
+@import './organization_search_card';
+@import './profile';
+
+.center {
+    display: flex;
+    justify-content: center;
+    width: inherit;
+}
+
