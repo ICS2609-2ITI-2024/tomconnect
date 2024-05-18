@@ -34,13 +34,10 @@ Header::render('Tomconnect Sign Up');
 </head>
 
 <body>
-
     <img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
 
     <div class="event-container">
-        <h1 class="dashboard-title">Events</h1>
-        <br>
-        <a href="" class="addnew-event-button">Add New Event</a>
+        <h1 class="dashboard-title">Read Table</h1>
         <br>
 
         <?php
@@ -72,7 +69,7 @@ Header::render('Tomconnect Sign Up');
                 echo '<td>' . htmlspecialchars((string) $row["link"]) . '</td>';
                 echo '<td>' . htmlspecialchars((string) $row["location"]) . '</td>';
                 echo "<td>";
-                echo '<a href="event_read.php?event_id=' . $row['event_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                echo '<a href="event_read?event_id=' . $row['event_id'] . '" class="mr-1" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
 
                 echo '<a href="event_update.php?event_id=' . $row['event_id'] . '" class="mr-1" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
 
@@ -89,6 +86,7 @@ Header::render('Tomconnect Sign Up');
         }
         ?>
     </div>
+
 
     <?php
     Footer::render();
