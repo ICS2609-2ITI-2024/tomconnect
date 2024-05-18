@@ -11,34 +11,22 @@ use Tomconnect\Models\OrganizationModel;
 
 Header::render('Tomconnect Delete Record');
 
-    // Prepare a delete statement
-    $sql = "DELETE FROM tomconnect_db WHERE org_id = ?";
+if (isset($_GET["org_id"]) && !empty(trim($_GET["org_id"]))) {
+    $org_id = trim($_GET["org_id"]);
 
-    if (isset($_GET["org_id"]) && !empty(trim($_GET["org_id"]))) {
-        
-        // Get the organization ID from the URL
-        $org_id = trim($_GET["org_id"]);
-
-        // Process form data when the form is submitted
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Attempt to delete the organization record
-            if (OrganizationModel::delete((int)$org_id)) {
-                // Redirect to the org dashboard page after successful deletion
-                header("location: organizations_dashboard.php");
-                exit();
-            } else {
-                // Display an error message if deletion fails
-                echo "Error deleting the organization record.";
-            }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!OrganizationModel::delete((int)$org_id)) {
+            header("location: organizations_dashboard.php");
+            exit();
+        } else {
+            echo "Error deleting the organization record.";
         }
-    } else {
-        // Redirect to the error page if org_id is not provided in the URL
-        header("location: error.php");
-        exit();
     }
-
+} else {
+    header("location: error.php");
+    exit();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

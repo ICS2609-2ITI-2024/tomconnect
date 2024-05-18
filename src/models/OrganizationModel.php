@@ -136,7 +136,6 @@ class OrganizationModel extends Model
      * @param array $data An associative array containing updated organization data.
      * @return string The generated SQL UPDATE statement.
      */
-    
     private static function generate_update_statement(array $data): string
     {
         $sql = "UPDATE organizations SET ";
