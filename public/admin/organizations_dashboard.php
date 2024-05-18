@@ -31,13 +31,17 @@ Header::render('Tomconnect Sign Up');
 
 </head>
 <body>
-
-    <img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
-
+<img src="../assets/ust_landscape.png" alt="" class="back-img back-img-blurred">
     <div class="dashboard-container">
         <h1 class="dashboard-title">Organizations</h1>
         <br>
-        <a href="" class="addnew-org-button">Add New Organization</a>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <a href="" class="addnew-org-button d-flex justify-content-center">Add New Organization</a>
+                </div>
+            </div>
+        </div>
         <br>
 
         <?php 
