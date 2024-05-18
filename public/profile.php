@@ -52,7 +52,7 @@ NavbarComponent::render();
                 <p class="profile-location">
                     <?= $organization['location'] ?>
                 </p>
-                <?php if(isset($_SESSION['is_logged_in'])): ?>
+                <?php if(isset($_SESSION['is_logged_in']) && $_SESSION['logged_id'] == $organization['admin_id']): ?>
                     <a href="../controllers/logout.php">Logout</a>
                 <?php endif ?>
             </div>
