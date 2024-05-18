@@ -9,7 +9,7 @@ class PostComponent
     {
 ?>
         <article class="post-card">
-            <div class="card">
+            <div class="">
                 <div class="author-container">
                     <a href="profile.php?p=<?= $author_name ?>">
                         <img src=<?= ($profile_image_url != null) ? $profile_image_url : 'assets/IcBaselineAccountCircle.png' ?> alt="" class="post-profile-image">
